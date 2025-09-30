@@ -13,6 +13,8 @@ class VenueController extends Controller
     public function index()
     {
         //
+        $venues = Venue::all(); //fecth all venues
+        return view('venues.index', compact('venues')); //return the view with venues
     }
 
     /**
