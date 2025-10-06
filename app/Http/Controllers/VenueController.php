@@ -12,7 +12,7 @@ class VenueController extends Controller
      */
     public function index()
     {
-        //
+        //This is to view all the venues on the display site
         $venues = Venue::all(); //fecth all venues
         return view('venues.index', compact('venues')); //return the view with venues
     }
@@ -38,7 +38,8 @@ class VenueController extends Controller
      */
     public function show(Venue $venue)
     {
-        //
+        //To dislplay a more indepth info on the venue you click on
+        return view('venues.show')->with('venue', $venue);
     }
 
     /**
