@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VenueController extends Controller
 {
@@ -22,7 +23,8 @@ class VenueController extends Controller
      */
     public function create()
     {
-        //
+        //This is the create function when making a new venue
+        return view('venues.create');
     }
 
     /**
@@ -30,7 +32,41 @@ class VenueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //Validate the request
+        $request->validate([
+            'title' => 'required',
+            'location' => 'required|max:500',
+            'price' => 'required|numeric',
+            'capacity' => 'required|integer',
+            'image' => 'required|image|mimes:jpeg,JPEG,png,PNG,jpg,JPG,gif,GIF|max:2048',
+            'description' => 'required|max:500',
+        ]);
+
+
+
+        // Check if the image is uploaded and handle it
+        if ($request->hasFile('image')){
+
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images/venues'), $imageName);
+        }
+
+        // Create a venue record in the database
+        Venue::create([
+                'title' => $request->title,
+                'location' => $request->location,
+                'price' => $request->price,
+                'capacity' => $request->capacity,
+                'image' => $imageName, //Stores image URL in the DB
+                'description' => $request->description,
+                'created_at' => now(),
+                'updated_at' => now()
+        ]);
+
+
+        // Redirect  in the index page with the success message
+        return to_route('venues.index')->with('success', 'Venue has been created successfully! 🥳');
     }
 
     /**

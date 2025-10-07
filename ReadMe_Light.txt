@@ -12,6 +12,13 @@ CA1
     /Week 1
 
     Week 2:
+        Monday - 6th Oct:
+            -
+            -
+        Tuesday - 7th Oct: 
+            -
+            -
+            -Mass assignment is a way to quickly fill a model with data using an array, instead of setting each property one by one. Laravel, however blocks it by default inorer to prevert hacker from addin unwanted data.
     /Week 2
 
     Week 3:
