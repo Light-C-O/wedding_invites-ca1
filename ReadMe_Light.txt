@@ -27,13 +27,21 @@ CA1
             -I'll be implementing the create venues.
             -I changed the path for the images again. It turns out the images/venues was in the database instead of just the image name.
             -I have also added a readme that I would eventually use as a log of what I have done so far.
+        
         Tuesday - 7th Oct: 
             -Tried start with the create venues, immediately had problems with the show venues, everything was working but the gaps were not acting accordingly. It worked out in the end
             -Started with the create: lots of syntax errors
-            -I also came an error that turns out when it comes to the validation, it doesn't accept float but numeric
+            -I also came an error that turns out when it comes to the validation, it doesn't accept float but numeric.
             -Came across a mass assignment error. A mass assignment is a way to quickly fill a model with data using an array, instead of setting each property one by one. Laravel, however blocks it by default inorer to prevert hacker from addin unwanted data.
             -Tried starting the edit but I have issues with the colour showing, it seems to be overidden somewhere.
-            -Also have problem with adding colour in the create success message as well as the edit & delete button 
+            -Also have problem with adding colour in the create success message as well as the edit & delete button.
+
+        Friday - 10th Oct:
+            -Had a few issues with the size of the image. Despite the resizing the images to same ratio, for some reason, at a cetain display layout some images shrinks. 
+            -I eventually found out that the image had a fixed width in the venue-card.blade.php, I changed to w-full inorder for it to strtch to the full container that it is in.
+            -I have been having problems with the background colour for a while now. It seems to be overwitten somewhere. I asked gpt where the issue and it said it might be due to purge config. I checked the app.css and everthing was okay. But in thailwind, there were a few things there. I told to correct the code and I paste it in the tailwind.config.js to check and it worked.
+            -I worked onthe venue-form.blade.php, and how the vaildation works and understanding. I have written comments on them show how some of them works, there are quite repetitive.
+            -Will be now focusing fully on implementing the update and delete section of ca1.
     /Week 2
 
     Week 3:
