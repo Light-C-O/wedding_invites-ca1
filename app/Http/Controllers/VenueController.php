@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Venue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class VenueController extends Controller
 {
@@ -24,7 +25,8 @@ class VenueController extends Controller
     public function create()
     {
         //This is the create function when making a new venue
-        return view('venues.create');
+        $venue = null; //empty model, no data
+        return view('venues.create', compact('venue'));
     }
 
     /**
@@ -40,7 +42,7 @@ class VenueController extends Controller
             'price' => 'required|numeric',
             'capacity' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,JPEG,png,PNG,jpg,JPG,gif,GIF|max:2048',
-            'description' => 'required|max:500',
+            'description' => 'required|max:1000',
         ]);
 
 
@@ -49,7 +51,7 @@ class VenueController extends Controller
         if ($request->hasFile('image')){
 
             $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images/venues'), $imageName);
+            $request->image->move(public_path('images/'), $imageName);
         }
 
         // Create a venue record in the database
@@ -83,7 +85,9 @@ class VenueController extends Controller
      */
     public function edit(Venue $venue)
     {
-        //
+        //This is the edit function when changing an already existing venue
+        return view('venues.edit', compact('venue'));
+
     }
 
     /**
@@ -91,7 +95,46 @@ class VenueController extends Controller
      */
     public function update(Request $request, Venue $venue)
     {
-        //
+
+        // Validate the form data
+        $validated = $request->validate([
+            'title' => 'required',
+            'location' => 'required|max:500',
+            'price' => 'required|numeric',
+            'capacity' => 'required|integer',
+            'description' => 'required|max:1000',
+        ]);
+
+        // Handle image upload if a new image is provided
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/'), $imageName);
+
+            // this deletes the old image from storage if needed, but leaves 
+            File::delete(public_path('images/' . $venue->image));
+
+            $validated['image'] = $imageName;
+        }
+        else {
+            $imageName= $venue ->image;
+        }
+
+        // Update the venue
+        $venue->update($validated);
+
+        //Update  a venue
+        $venue->update([
+            'title' => $request->title,
+            'location' => $request->location,
+            'price' => $request->price,
+            'capacity' => $request->capacity,
+            'image' => $imageName,
+            'description' => $request->description,
+        ]);
+
+        // Redirect  in the index page with the success message
+        return to_route('venues.index')->with('success', 'Venue has been updated successfully! 🥳');
+
     }
 
     /**
@@ -99,6 +142,9 @@ class VenueController extends Controller
      */
     public function destroy(Venue $venue)
     {
-        //
+        //to delete a venue
+        $venue->delete();
+        // Redirect  in the index page with the success message
+        return to_route('venues.index')->with('success', 'Venue has been deleted successfully! 🥳');
     }
 }

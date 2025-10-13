@@ -1,5 +1,5 @@
 <!-- action: the URL the form should redirect to.method: the HTTP method (like POST, PUT -->
-@props(['action', 'method'])
+@props(['action', 'method', 'venue' => null])
 <!--It will submit to the URL given by $action.
 
 It uses the POST method always in HTML, even for PUT/PATCH (Laravel handles this later).
@@ -14,7 +14,6 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     @endif
 
     <!-- Title -->
-    <!--  -->
     <div class="mb-4">
         <label for="title" class="block text-sm text-gray-700">Title</label>
         <!-- This says that 'title' is required. If form is being reloaded (like after a validation error), it shows the previous input (old('title')). Otherwise, it shows the venue's current title (if you'rer editing). If there is no value, it is blank. -->
@@ -24,7 +23,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
         id="title"
         value="{{ old('title', $venue->title ?? '') }}"
         required
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         <!-- If there is a error for the title, this shows the error message in red, stating that is not valid. -->
         @error('title')
         <p class="text-sm text-red-600">{{ $message }}</p>
@@ -40,7 +39,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
         id="location"
         value="{{ old('location', $venue->location ?? '') }}"
         required
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         <!-- Throw an error is requiremtns is not met -->
         @error('location')
         <p class="text-sm text-red-600">{{ $message }}</p>
@@ -56,7 +55,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
         id="price"
         value="{{ old('price', $venue->price ?? '') }}"
         required
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         @error('price')
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
@@ -71,7 +70,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
         id="capacity"
         value="{{ old('capacity', $venue->capacity ?? '') }}"
         required
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         @error('capacity')
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
@@ -96,7 +95,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     @isset($venue->image)
         <div class="mb-4">
             <!-- Displays the existing venue image.asset($venue->image) gives the full URL to the image. The image has a fixed size and cropped to look neat. -->
-            <img src="{{ asset($venue->image) }}" alt="Venue cover" class="w-24 h-32 object-cover">
+            <img src="{{ asset('images/venues/' . $venue->image) }}" alt="Venue cover" class="w-24 h-32 object-cover">
         </div>
     @endisset
 
@@ -104,13 +103,16 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     <!-- Description -->
     <div class="mb-4">
         <label for="description" class="block text-sm text-gray-700">Description</label>
-        <input
+        <!-- using textarea tab instead of input for the description to be more easy on the eye as well as for reading -->
+        <textarea
+        rows="8"
+        cols="50"
         type="text"
         name="description"
         id="description"
         value="{{ old('description', $venue->description ?? '') }}"
         required
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        class="overflow mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('description', $venue->description ?? '') }}</textarea>
         @error('description')
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
@@ -118,8 +120,14 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     
     <div>
         <!-- If you're editing a venue,($venue is set) the button says 'Update Venue' otherwise, 'Add Venue' since you are creating one  -->
-        <x-primary-button>
-        {{ isset($venue) ? 'Update Venue' : 'Add Venue' }}
+        <x-primary-button >
+            @if($venue)
+                <p>{{'Update Venue'}}</p>
+                @else
+                <p>{{'Add Venue'}}</p>
+            @endif
         </x-primary-button>
+        <!-- The cancel button -->
+        <button class="bg-white hover:bg-pink-200 text-black uppercase font-bold py-2 px-4 border-b-4 border-pink-700 hover:border-pink-500 rounded"><a href="{{ route('venues.index') }}">Go Back</a></button>
     </div>
 </form>
