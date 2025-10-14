@@ -1,7 +1,7 @@
 @props(['title', 'location', 'capacity', 'price', 'image', 'description'])
 
 <!-- Venue Detail -->
-<div  iv class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
+<div  iv class=" bg-[#C77966] border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
 
     <!-- Venue Title -->
     <h1 class="font-bold text-black-600 mb-2" style="font-size: 3rem;">{{ $title }}</h1> <!-- Heading with larger text and color -->

@@ -1,4 +1,4 @@
-<button class="text-base inline-flex items-center bg-gray-800 hover:bg-blue-400 text-white uppercase tracking-widest font-bold py-2 px-4 border-b-4 border-gray-400 hover:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" >
+<button class="text-base inline-flex items-center bg-gray-800 hover:bg-[#b75d42] text-white uppercase tracking-widest font-bold py-2 px-4 border-b-4 border-gray-400 hover:border-[#be123c] rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" >
     {{ $slot }}
 </button>
 

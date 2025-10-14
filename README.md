@@ -56,6 +56,9 @@
     - I added the delete function, in order for the venue to be deleted not only front-end(client side/browser) but also in back-end(server-side/phpMyAdmin).
     - I moved the delete and edit buttons to the show.blade to make the index.blade more breathable.
     - Modified the button component as well as the alert-success.blade.
+    - 
+- **Tuesday - 14th Oct:**
+    - Started the styling.
 
 
 ### Week 4
