@@ -56,10 +56,16 @@
     - I added the delete function, in order for the venue to be deleted not only front-end(client side/browser) but also in back-end(server-side/phpMyAdmin).
     - I moved the delete and edit buttons to the show.blade to make the index.blade more breathable.
     - Modified the button component as well as the alert-success.blade.
-    - 
+    - Offically completed the CRUD function.
+
 - **Tuesday - 14th Oct:**
     - Started the styling.
+    - Had issues with bcakgoround colour, it was easily resolved when I input npm run dev in the terminal.
 
+- **Thursday - 16th Oct:**
+    - Continuing with the styling
+    - Making a dark and light mode.
+    - Ran through some with the route for the venues.show. I wantted a go back button when you click on the edit button that you to the venues.edit. I had to change the if statement to venue !=>null to show that if there's something in there go make to said venue that exists.
 
 ### Week 4
 

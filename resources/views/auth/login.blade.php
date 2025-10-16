@@ -11,10 +11,10 @@
                     @else
                         @if (Route::has('register'))
                         <div class="flex justify-between">
-                            <a href="{{ url('/') }}" class="text-base inline-block px-5 py-1.5 dark:text-[#EDEDEC] hover:font-bold rounded-sm text-base leading-normal">&#11160;Go Back </a>
+                            <a href="{{ url('/') }}" class="text-base inline-block px-5 py-1.5 hover:font-bold rounded-sm text-base leading-normal">&#11160; Go Back </a>
                             <a
                                 href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 place-self- dark:text-[#EDEDEC] border-[#19140035] hover:border-[#ff0dd3] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] hover:font-bold rounded-sm text-base leading-normal">
+                                class="inline-block px-5 py-1.5 place-self- border-[#19140035] hover:border-[#ff0dd3] border text-[#1b1b18] hover:font-bold rounded-sm text-base leading-normal">
                                 Register
                             </a>
                         </div>

@@ -1,4 +1,5 @@
 <!-- action: the URL the form should redirect to.method: the HTTP method (like POST, PUT -->
+<!-- venue => null in order to create a new venue -->
 @props(['action', 'method', 'venue' => null])
 <!--It will submit to the URL given by $action.
 
@@ -55,7 +56,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
         id="price"
         value="{{ old('price', $venue->price ?? '') }}"
         required
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+        class="p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         @error('price')
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
@@ -70,7 +71,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
         id="capacity"
         value="{{ old('capacity', $venue->capacity ?? '') }}"
         required
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+        class="p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
         @error('capacity')
         <p class="text-sm text-red-600">{{ $message }}</p>
         @enderror
@@ -120,14 +121,23 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     
     <div>
         <!-- If you're editing a venue,($venue is set) the button says 'Update Venue' otherwise, 'Add Venue' since you are creating one  -->
-        <x-primary-button >
-            @if($venue)
-                <p>{{'Update Venue'}}</p>
-                @else
-                <p>{{'Add Venue'}}</p>
+        <x-primary-button class="gap-4">
+            <!-- in order to edit a venue, $venue must not be empty -->
+            @if($venue !== null)
+                <p>{{ 'Update Venue' }}</p>
+                <!-- The cancel button -->
+                <button class="bg-white hover:bg-pink-200 text-black uppercase font-bold py-2 px-4 border-b-4 border-pink-700 hover:border-pink-500 rounded transition ease-in-out duration-150">
+                    <a href="{{ route('venues.show', ['venue' => $venue->id]) }}">Go Back</a>
+                </button>
+            <!-- if $venue is null then add a new one -->
+            @else
+                <p>{{ 'Add Venue' }}</p>
+                <!-- The cancel button -->
+                <button class="bg-white hover:bg-pink-200 text-black uppercase font-bold py-2 px-4 border-b-4 border-pink-700 hover:border-pink-100 rounded transition ease-in-out duration-150">
+                    <a href="{{ route('venues.index') }}">Go Back</a>
+                </button>
             @endif
+
         </x-primary-button>
-        <!-- The cancel button -->
-        <button class="bg-white hover:bg-pink-200 text-black uppercase font-bold py-2 px-4 border-b-4 border-pink-700 hover:border-pink-500 rounded"><a href="{{ route('venues.index') }}">Go Back</a></button>
     </div>
 </form>

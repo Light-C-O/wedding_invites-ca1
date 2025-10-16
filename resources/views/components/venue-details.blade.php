@@ -1,7 +1,7 @@
 @props(['title', 'location', 'capacity', 'price', 'image', 'description'])
 
 <!-- Venue Detail -->
-<div  iv class=" bg-[#C77966] border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
+<div  iv class="bg-[#f8f5ed] border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
 
     <!-- Venue Title -->
     <h1 class="font-bold text-black-600 mb-2" style="font-size: 3rem;">{{ $title }}</h1> <!-- Heading with larger text and color -->
@@ -34,15 +34,15 @@
                 <!-- end description -->
             </div>
             <!-- Locstion & Price -->
-            <div class="text-gray-500 text-sm italic" style="font-size: 1rem;">
+            <div class="text-gray-500 text-base font-bold mb-4 italic">
                 <!-- Venue Location -->
                     <!-- Emphasizing location with italics and smaller text -->
-                    <h2 class="mb-4">Location: {{ $location }}</h2>
+                    <h2>Location: {{ $location }}</h2>
                 <!-- end location -->
 
                 <!-- Venue Capacity -->
                     <!-- Emphasizing capacity with italics and smaller text -->
-                    <h2 class="mb-4">Capacity: {{ $capacity }} people</h2>
+                    <h2>Capacity: {{ $capacity }} people</h2>
                 <!-- end capacity -->
             </div>
         </div>
