@@ -3,6 +3,7 @@
 ### Week 1
 - **Monday - 29th Sept:**
     - Started CA1.
+    - Created an ERD.
     - Installed Laravel which is a PHP framework for building modern, full-stack web applications, and a framework ios a tool that assists when it comes to saving time and benig organised.
     - Installed a new project as an exapmle, and used php artisan serve to run the application. [http://127.0.0.1:8000] - this where you see the running application.
 
@@ -66,10 +67,11 @@
     - Continuing with the styling
     - Making a dark and light mode.
     - Ran through some with the route for the venues.show. I wantted a go back button when you click on the edit button that you to the venues.edit. I had to change the if statement to venue !=>null to show that if there's something in there go make to said venue that exists.
+    - Completeed with the desired appearance.
+    - Preparing the script for video section of ca1.
 
 ### Week 4
 
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git
-

@@ -126,14 +126,14 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
             @if($venue !== null)
                 <p>{{ 'Update Venue' }}</p>
                 <!-- The cancel button -->
-                <button class="bg-white hover:bg-pink-200 text-black uppercase font-bold py-2 px-4 border-b-4 border-pink-700 hover:border-pink-500 rounded transition ease-in-out duration-150">
+                <button class="bg-[#aebb98] hover:bg-[#aeb8be] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#959c88] hover:border-[#7e8f9b] rounded transition ease-in-out duration-150">
                     <a href="{{ route('venues.show', ['venue' => $venue->id]) }}">Go Back</a>
                 </button>
             <!-- if $venue is null then add a new one -->
             @else
                 <p>{{ 'Add Venue' }}</p>
                 <!-- The cancel button -->
-                <button class="bg-white hover:bg-pink-200 text-black uppercase font-bold py-2 px-4 border-b-4 border-pink-700 hover:border-pink-100 rounded transition ease-in-out duration-150">
+                <button class="bg-[#aebb98] hover:bg-[#aeb8be] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#959c88] hover:border-[#7e8f9b] rounded transition ease-in-out duration-150">
                     <a href="{{ route('venues.index') }}">Go Back</a>
                 </button>
             @endif
