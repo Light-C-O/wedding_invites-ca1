@@ -4,6 +4,7 @@
 - **Monday - 29th Sept:**
     - Started CA1.
     - Created an ERD.
+    - Installed Node.js - is a tool used in laravel to make CSS files like tailwind to register in the programme.
     - Installed Laravel which is a PHP framework for building modern, full-stack web applications, and a framework ios a tool that assists when it comes to saving time and benig organised.
     - Installed a new project as an exapmle, and used php artisan serve to run the application. [http://127.0.0.1:8000] - this where you see the running application.
 
@@ -14,6 +15,7 @@
     - Created a Resource Controller, it is a special type of Controller that automatically handles common actions you usually need for a resource. Thinng like create(), show(), edit() etc. Unlike a reguallar Controller, it generates all standard CRUD methods to make things operate faster and easier.
     - A View was made as well, which  bascally displays the user interface, it is the front-end code that user sees in the browser.
     - Created routes in the web.php. A route is simply a way to define what should happen when someone visits a specific URL in your web app.
+    - A web.php is a routes files provided by Laravel, it is where you define routes(_URLs_) for your web application that can be accessed through the browser.
 
 - **Thursday - 2nd Oct:**
     - Had a few problems with Laravel, and it turns there were syntax errors as well as the fact I migrated but forgot seed the database. 
@@ -50,6 +52,7 @@
 ### Week 3
 - **Monday - 13th Oct:**
     - Had a few errors with the tailwind config. Had to clear the artisan view then the artisan config, then npm run dev on the terminal.
+    - What npm run dev in this situation, it is only used fron fronted assets like CSS(_in this case, Tailwind_), Javascript and Images. It compiles these assets for development. So, if you change anything in app.css or and js file (_like tailwind.config.js_) then run the npm run dev - it compiles file and when you refresh the browers, you'll see the updates made.
     - Started the edit section. I had to figure out the how to make the edit and update function in the VenueController. It was similar to the create and store, there wwere a few tweaks here and there with the help of chatGPT.
     - In the venue-form.blade, I changed the <x-primary-button> because for some reason the former layout didn't work, instead of using the short form of the if statement (?? : ) , I decided on the full @if statement. I also added a cancel button to redirect to the index.blade, both on the edit and the create.
     - Completed the edit.blade, mostly a copy and paste of the the creat.blade.
@@ -69,6 +72,10 @@
     - Ran through some with the route for the venues.show. I wantted a go back button when you click on the edit button that you to the venues.edit. I had to change the if statement to venue !=>null to show that if there's something in there go make to said venue that exists.
     - Completeed with the desired appearance.
     - Preparing the script for video section of ca1.
+
+- **Friday - 17th Oct:**
+    - Started with fefining my comments of the code. Expaling the more important bits.
+    - Updated the ERD.
 
 ### Week 4
 
