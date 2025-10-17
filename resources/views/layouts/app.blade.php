@@ -29,6 +29,7 @@
 
             <!-- Page Content -->
             <main>
+                <!-- The $slot variable is a special variable in Blade components that holds the content passed from the parent view to the component. -->
                 {{ $slot }}
             </main>
         </div>

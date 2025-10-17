@@ -34,6 +34,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     <!-- Location -->
     <div class="mb-4">
         <label for="location" class="block text-sm text-gray-700">Location</label>
+        <!-- Similar to title, it checks for old input or existing venue location -->
         <input
         type="text"
         name="location"
@@ -81,6 +82,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     <div class="mb-4">
         <label for="image" class="block text-sm font-medium text-gray-700">Venue Cover Image</label>
         <!-- It is required only if we're adding a new venue. -->
+        <!-- The input for uploading an image file. If $venue is set (we're editing), it is not required, otherwise (adding new venue) it is required. -->
         <input
         type="file"
         name="image"
@@ -104,7 +106,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     <!-- Description -->
     <div class="mb-4">
         <label for="description" class="block text-sm text-gray-700">Description</label>
-        <!-- using textarea tab instead of input for the description to be more easy on the eye as well as for reading -->
+        <!-- using textarea tag instead of input for the description to be more easy on the eye as well as for reading -->
         <textarea
         rows="8"
         cols="50"

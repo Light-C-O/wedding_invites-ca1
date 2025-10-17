@@ -12,6 +12,7 @@
             <div class=" bg-[#adb2a5] overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-grey-900">
                     <h3 class="font-semibold text-lg mb-4">Venue Details:</h3>
+                        <!-- Display detailed information about the venue using the venue-details component -->
                         <x-venue-details
                             :title="$venue->title"
                             :image="$venue->image"

@@ -12,6 +12,8 @@
     - Created my ca1 project. 
     - Created a Model which is a PHP class, a blueprint or representation of a database table. It helps you interact with the database easily. It handles the database in the background so you don't have to deal with the complication of SQL, it keeps things simple and organised.
     - Created a Migration, it like a version control for your database. It helps you create, modify, and share the database structure such as tables, columns, indexes in a consistent way. Instead of manually creating tables using SQL, you can a write PHP code to define the database structure, and Laravel runs it to update the database.
+      - php artisan migrate - it creates or updates my database table based on what I have written in my migration file: [2025_09_29_125731_create_venues_table.php].
+      - php artisan db:seed - it fills my database with simple or initial data automaticallly. It populates my venue table with the data that is in this file: [VenueSeeder.php].
     - Created a Resource Controller, it is a special type of Controller that automatically handles common actions you usually need for a resource. Thinng like create(), show(), edit() etc. Unlike a reguallar Controller, it generates all standard CRUD methods to make things operate faster and easier.
     - A View was made as well, which  bascally displays the user interface, it is the front-end code that user sees in the browser.
     - Created routes in the web.php. A route is simply a way to define what should happen when someone visits a specific URL in your web app.
@@ -69,13 +71,16 @@
 - **Thursday - 16th Oct:**
     - Continuing with the styling
     - Making a dark and light mode.
-    - Ran through some with the route for the venues.show. I wantted a go back button when you click on the edit button that you to the venues.edit. I had to change the if statement to venue !=>null to show that if there's something in there go make to said venue that exists.
+    - I decided to change the cancel button (_go back button_) to redirect to either the index or the edit depending on if it is a create venue on an edit venue
+    - Ran through some problems with the cancel button, when it comes to the route for the venues.show. I wantted a go back button when you click on the edit button that you to the venues.edit. I had to change the if statement to venue !=>null to show that if there's something in there go make to said venue that exists.
     - Completeed with the desired appearance.
     - Preparing the script for video section of ca1.
 
 - **Friday - 17th Oct:**
     - Started with fefining my comments of the code. Expaling the more important bits.
     - Updated the ERD.
+    - Wrote comments on all the codes I can understand.
+    - It is important to run the npm run dev for all the tailwind css file to be updated on the browser.
 
 ### Week 4
 

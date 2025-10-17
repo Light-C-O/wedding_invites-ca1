@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Venue;
 use Carbon\Carbon;
 
+// Seeder for populating the 'venues' table with initial data
 class VenueSeeder extends Seeder
 {
     /**

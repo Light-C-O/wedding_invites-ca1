@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the 'venues' table
         Schema::create('venues', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -18,7 +19,7 @@ return new class extends Migration
             $table->float('price');
             $table->integer('capacity');
             $table->string('image');
-            $table->text('description')->nullable;
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

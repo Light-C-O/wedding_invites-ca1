@@ -23,6 +23,7 @@
                 </nav>
             @endif
         </header>
+        <!-- Login Form -->
     <form method="POST" action="{{ route('login') }}">
         @csrf
 

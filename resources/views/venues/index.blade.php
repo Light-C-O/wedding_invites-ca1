@@ -1,11 +1,13 @@
 <x-app-layout>
     <x-slot name="header" class="bg-[#e5e7e9] dark:bg[#9c9899]">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <!-- Header for the All Venues page -->
             {{ _('All Venues')}}
         </h2>
     </x-slot>
 
     <x-alert-success>
+        <!-- Display success message if available -->
         {{session('success') }}
     </x-alert-success>
 
@@ -15,6 +17,7 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">List of Venues:</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Loop through each venue and display it using the venue-card component -->
                         @foreach($venues as $venue)
                                 <a href="{{ route('venues.show', $venue) }}">
                                     <x-venue-card
