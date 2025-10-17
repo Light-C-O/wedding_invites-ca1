@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-grey-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
             {{ _('All Venues')}}
 
         </h2>
@@ -9,8 +9,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class=" bg-[#adb2a5] overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-grey-900">
+            <div class=" bg-[#adb2a5] dark:bg-[#6a6e63] overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-grey-900 dark:text-gray-100">
                     <h3 class="font-semibold text-lg mb-4">Venue Details:</h3>
                         <!-- Display detailed information about the venue using the venue-details component -->
                         <x-venue-details

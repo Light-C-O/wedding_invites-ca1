@@ -73,14 +73,19 @@
     - Making a dark and light mode.
     - I decided to change the cancel button (_go back button_) to redirect to either the index or the edit depending on if it is a create venue on an edit venue
     - Ran through some problems with the cancel button, when it comes to the route for the venues.show. I wantted a go back button when you click on the edit button that you to the venues.edit. I had to change the if statement to venue !=>null to show that if there's something in there go make to said venue that exists.
-    - Completeed with the desired appearance.
+    - Mostly completed with the desired appearance.
     - Preparing the script for video section of ca1.
 
 - **Friday - 17th Oct:**
-    - Started with fefining my comments of the code. Expaling the more important bits.
+    - Started with refining my comments of the code. Expaling the more important bits.
     - Updated the ERD.
     - Wrote comments on all the codes I can understand.
     - It is important to run the npm run dev for all the tailwind css file to be updated on the browser.
+    - Decided to add my own logo and comment out the laravel one.
+    - Ran into issues when trying my logo as an svg, ended up doing it as an image.
+    - Learned how changed the color of an image by filter invert - it helpd it inverting and reverting black and image for light and dark mode.
+    - Completed the dark and light mode appearance, unlikely to add anymore.
+    - Will start the video recording.
 
 ### Week 4
 

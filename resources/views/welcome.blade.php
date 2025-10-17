@@ -19,7 +19,7 @@
             </style> -->
         @endif
     </head>
-    <body class="bg-[#d1cec6] dark:bg-[#E8D3B9] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+    <body class="bg-[#d1cec6] dark:bg-[#403d35] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
         <!-- <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
@@ -52,34 +52,22 @@
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
                 <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-1 font-bold text-center uppercase text-2xl">Venue Resort</h1>
-                    <p class="mb-2 text-center text-base text-[#706f6c] dark:text-[#A1A09A]">At the Venue Resort is where Happy Ever After truly begins.</p>
-                    <ul class="flex flex-col mb-4 lg:mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                        </li>
-                    </ul>
-                    <ul class="text-base leading-normal">
+                    <div>
+                        <x-application-logo class=" text-center w-40 h-auto mb-5" />
+                    </div>
+                    <h1 class="mb-2 font-bold text-center uppercase text-2xl">Venue Resort</h1>
+                    <p class="mb-5 text-center text-base text-[#706f6c] dark:text-[#A1A09A]">At the Venue Resort is where Happy Ever After truly begins.</p>
+                    <ul class="text-base leading-normal flex justify-center">
                         <li>
-                            <a href="{{ url('/dashboard') }}" class=" text-center inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-2 bg-[#1b1b18] rounded-sm border border-black text-white text-base leading-normal">
-                                Choose your vision
+                            <a href="{{ url('/dashboard') }}" class="text-center inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-2 bg-[#1b1b18] rounded-sm border border-black text-white text-base leading-normal">
+                                Choose Your Vision
                             </a>
                         </li>
                     </ul>
                 </div>
+                <!-- Image Section -->
                 <div class="relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/335] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
-                    <img class= "w-full rounded-r-lg"src="images/wedding_open.jpeg" alt="">
+                    <img class= "w-full h-full object-cover rounded-bl-none rounded-br-none rounded-br-lg lg:rounded-tl-none lg:rounded-br-none lg:rounded-tr-lg"src="images/wedding_open.jpeg" alt="">
 
                 </div>
             </main>

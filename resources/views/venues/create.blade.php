@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-grey-800 leading-tight">
+        <h2 class="font-semibold text-xl text-grey-800 dark:text-gray-100 leading-tight">
             <!-- Header for the Create New Venues page -->
             {{ _('Create New Venues')}}
 
@@ -12,7 +12,7 @@
     <div class="py-12">
         <!-- Venue Creation Form Section -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-[#f8f5ed] overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-[#f8f5ed] dark:bg-[#aeaeae] overflow-hidden dark:border border-gray-900 shadow-sm sm:rounded-lg">
                 <div class="p-6 text-grey-900">
                     <!-- Form to create a new venue -->
                     <h3 class="font-semibold text-lg mb-4">Add a New Venue:</h3>
