@@ -87,6 +87,10 @@
     - Completed the dark and light mode appearance, unlikely to add anymore.
     - Will start the video recording.
 
+- **Saturday - 18th Oct:**
+    - Add a couple comments the to better explain the code.
+    - Prepared the script for the video recording.
+
 ### Week 4
 
 
