@@ -92,7 +92,8 @@
     - Prepared the script for the video recording.
 
 ### Week 4
-
+- **Monday - 20th Oct:**
+    - Decided to change the images route back to images/venues/.
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

@@ -51,7 +51,7 @@ class VenueController extends Controller
         if ($request->hasFile('image')){
 
             $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images/'), $imageName);
+            $request->image->move(public_path('images/venues/'), $imageName);
         }
 
         // Create a venue record in the database
@@ -108,10 +108,10 @@ class VenueController extends Controller
         // Handle image upload if a new image is provided
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images/'), $imageName);
+            $request->image->move(public_path('images/venues/'), $imageName);
 
             // this deletes the old image from storage if needed, but leaves 
-            File::delete(public_path('images/' . $venue->image));
+            File::delete(public_path('images/venues/' . $venue->image));
 
             $validated['image'] = $imageName;
         }
