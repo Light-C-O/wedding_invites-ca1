@@ -53,7 +53,7 @@
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
                 <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
                     <div>
-                        <x-application-logo class=" text-center w-40 h-auto mb-5" />
+                        <x-application-logo class=" text-center w-40 h-auto mb-5"  id='dark_toggle'/>
                     </div>
                     <h1 class="mb-2 font-bold text-center uppercase text-2xl">Venue Resort</h1>
                     <p class="mb-5 text-center text-base text-[#706f6c] dark:text-[#A1A09A]">At the Venue Resort is where Happy Ever After truly begins.</p>

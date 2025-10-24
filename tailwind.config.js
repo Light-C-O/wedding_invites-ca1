@@ -30,6 +30,8 @@ import forms from '@tailwindcss/forms'
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class', // <-- Allows toggling dark mode with class
+
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php', // <-- Add this if using Jetstream

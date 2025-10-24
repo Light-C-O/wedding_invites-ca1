@@ -96,5 +96,13 @@
     - Decided to change the images route back to images/venues/.
     - Completed the recording.
 
+- **Friday - 24th Oct:**
+    - Added a new last minute feature(_this was not added to the recording_). Instead of the manually changing the setting on the device from light mode to dark mode. I decided to toggle.
+    - I made two js files called dark_toggle and dark_toggle_mobile. These are a toggle scripts that will see if the there's any dark class in the html and cause a reaction when clicked. I used the addEventListener in order to do this.
+    - The dark_toggle.js is for the setting dropdown and the dark_toggle_mobile.js is by the hamburger menu when on mobile form. This is in the navigation.blade.php.
+    - I had to modify tasilwind.config.js for it to allow any toggling in the dark class.
+    - I also added the with an id on the buttons and the logo in  welcome.blade.php to conntect to the specified js file.
+    - I imported these file to the app.js.
+
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git
