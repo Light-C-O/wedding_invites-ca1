@@ -24,6 +24,9 @@ class VenueController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->role !== 'admin'){
+            return to_route('venues.index')->with('error', 'You do not have permission to create a venue.');
+        }
         //This is the create function when making a new venue
         $venue = null; //empty model, no data
         return view('venues.create', compact('venue'));

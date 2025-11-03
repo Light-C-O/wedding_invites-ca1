@@ -18,9 +18,13 @@
                     <x-nav-link :href="route('venues.index')" :active="request()->routeIs('venues.index')">
                         {{ __('View All Venues') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('venues.create')" :active="request()->routeIs('venues.create')">
-                        {{ __('Create Venues') }}
-                    </x-nav-link>
+
+                    <!--  Show 'Create Venues' link only for admin users -->
+                    @if (auth()->user()->role === 'admin')
+                        <x-nav-link :href="route('venues.create')" :active="request()->routeIs('venues.create')">
+                            {{ __('Create Venues') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
