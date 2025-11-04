@@ -22,4 +22,11 @@ class Venue extends Model
         'updated_at',
     ];
 
+    // Define relationship with Wedding model
+    public function weddings()
+    {
+        //One venue can host many weddings
+        return $this->hasMany(Wedding::class);
+    }
+
 }

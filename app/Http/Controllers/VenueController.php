@@ -38,6 +38,11 @@ class VenueController extends Controller
     public function store(Request $request)
     {
 
+        //Authorization check
+        if(auth()->user()->role !== 'admin'){
+            return to_route('venues.index')->with('error', 'You do not have permission to create a venue.');
+        }
+
         //Validate the request
         $request->validate([
             'title' => 'required',
@@ -81,6 +86,11 @@ class VenueController extends Controller
     {
         //To dislplay a more indepth info on the venue you click on
         return view('venues.show')->with('venue', $venue);
+
+        //Authorization check
+        if(auth()->user()->role !== 'admin'){
+            return to_route('venues.index')->with('error', 'You do not have permission to view this venue.');
+        }
     }
 
     /**
@@ -90,6 +100,11 @@ class VenueController extends Controller
     {
         //This is the edit function when changing an already existing venue
         return view('venues.edit', compact('venue'));
+
+        //Authorization check
+        if(auth()->user()->role !== 'admin'){
+            return to_route('venues.index')->with('error', 'You do not have permission to edit this venue.');
+        }   
 
     }
 
@@ -138,6 +153,11 @@ class VenueController extends Controller
         // Redirect  in the index page with the success message
         return to_route('venues.index')->with('success', 'Venue has been updated successfully! 🥳');
 
+        //Authorization check
+        if(auth()->user()->role !== 'admin'){
+            return to_route('venues.index')->with('error', 'You do not have permission to update this venue.');
+        }
+
     }
 
     /**
@@ -149,5 +169,11 @@ class VenueController extends Controller
         $venue->delete();
         // Redirect  in the index page with the success message
         return to_route('venues.index')->with('success', 'Venue has been deleted successfully! 🥳');
+
+
+        //Authorization check
+        if(auth()->user()->role !== 'admin'){
+            return to_route('venues.index')->with('error', 'You do not have permission to delete this venue.');
+        }
     }
 }

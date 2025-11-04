@@ -21,6 +21,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this ->call(VenueSeeder::class);
+        //Commented out to prevent duplicate seeding
+            // Call the VenueSeeder to seed venues table
+            // $this ->call(VenueSeeder::class);
+            
+            // Call the WeddingSeeder to seed weddings table
+            // $this ->call(WeddingSeeder::class);
     }
 }

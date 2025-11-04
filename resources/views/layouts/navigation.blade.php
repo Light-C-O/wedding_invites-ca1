@@ -15,14 +15,22 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <!-- Venues Links -->
                     <x-nav-link :href="route('venues.index')" :active="request()->routeIs('venues.index')">
                         {{ __('View All Venues') }}
+                    </x-nav-link>
+                    <!--Wedding Links-->
+                    <x-nav-link :href="route('weddings.index')" :active="request()->routeIs('weddings.index')">
+                        {{ __('View All Weddings') }}
                     </x-nav-link>
 
                     <!--  Show 'Create Venues' link only for admin users -->
                     @if (auth()->user()->role === 'admin')
                         <x-nav-link :href="route('venues.create')" :active="request()->routeIs('venues.create')">
                             {{ __('Create Venues') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('weddings.create')" :active="request()->routeIs('weddings.create')">
+                            {{ __('Create Weddings') }}
                         </x-nav-link>
                     @endif
                 </div>

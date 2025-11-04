@@ -1,0 +1,46 @@
+<?php
+//pull location from the venue table
+use App\Models\Venue;
+$venues = Venue::find($wedding->venue_id);
+?>
+
+<x-app-layout>
+    <x-slot name="header" class="bg-[#e5e7e9] dark:bg[#9c9899]">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
+            <!-- Header for the All Weddings page -->
+            {{ _('All Weddings')}}
+        </h2>
+    </x-slot>
+
+    <x-alert-success>
+        <!-- Display success message if available -->
+        {{session('success') }}
+    </x-alert-success>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-[#adb2a5] dark:bg-[#6a6e63] overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h3 class="font-semibold text-lg mb-4">List of Weddings:</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Loop through each wedding and display it using the wedding-card component -->
+                        
+                        @foreach($weddings as $wedding)
+                            <?php
+                            $venue = Venue::find($wedding->venue_id)->location;
+                            ?>
+                                <a href="{{ route('weddings.show', $wedding) }}">
+                                    <x-wedding-card
+                                        :bride_name="$wedding->bride_name"
+                                        :groom_name="$wedding->groom_name"
+                                        :location="$venue->location"
+                                        :wedding_date_time="$wedding->wedding_date_time"
+                                    />
+                                </a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
