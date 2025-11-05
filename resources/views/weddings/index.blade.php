@@ -1,9 +1,3 @@
-<?php
-//pull location from the venue table
-use App\Models\Venue;
-$venues = Venue::find($wedding->venue_id);
-?>
-
 <x-app-layout>
     <x-slot name="header" class="bg-[#e5e7e9] dark:bg[#9c9899]">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
@@ -26,14 +20,11 @@ $venues = Venue::find($wedding->venue_id);
                         <!-- Loop through each wedding and display it using the wedding-card component -->
                         
                         @foreach($weddings as $wedding)
-                            <?php
-                            $venue = Venue::find($wedding->venue_id)->location;
-                            ?>
                                 <a href="{{ route('weddings.show', $wedding) }}">
                                     <x-wedding-card
                                         :bride_name="$wedding->bride_name"
                                         :groom_name="$wedding->groom_name"
-                                        :location="$venue->location"
+                                        :venue_id="$wedding->venue->title ?? 'Unknown Venue'"
                                         :wedding_date_time="$wedding->wedding_date_time"
                                     />
                                 </a>

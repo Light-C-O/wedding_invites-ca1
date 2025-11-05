@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
 
         //Commented out to prevent duplicate seeding
             // Call the VenueSeeder to seed venues table
-            // $this ->call(VenueSeeder::class);
+            $this ->call(VenueSeeder::class);
             
             // Call the WeddingSeeder to seed weddings table
-            // $this ->call(WeddingSeeder::class);
+            $this ->call(WeddingSeeder::class);
     }
 }

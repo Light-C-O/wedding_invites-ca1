@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Wedding;
+use App\Models\Venue;
 use Illuminate\Http\Request;
 
 class WeddingController extends Controller
@@ -13,7 +14,7 @@ class WeddingController extends Controller
     public function index()
     {
         //fetch all weddings
-        $weddings = Wedding::all();
+        $weddings = Wedding::with('venue')->get();
         return view('weddings.index', compact('weddings'));
     }
 
@@ -70,7 +71,7 @@ class WeddingController extends Controller
         ]);
 
         //Return to index once create succesfully
-
+        return to_route('weddings.index')->with('success', 'Wedding has been created successfully! 🥳');
     }
 
     /**
@@ -79,6 +80,9 @@ class WeddingController extends Controller
     public function show(Wedding $wedding)
     {
         //
+        $wedding->load('venue');
+
+        return view('weddings.show', compact('wedding'));
     }
 
     /**

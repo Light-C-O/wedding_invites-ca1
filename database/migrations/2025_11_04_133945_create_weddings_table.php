@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('bride_name');
             $table->string('groom_name');
-            $table->string('location');
             $table->string('best_man');
             $table->string('maid_of_honor');
             $table->datetime('wedding_date_time');

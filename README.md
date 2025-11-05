@@ -14,9 +14,12 @@
     - Created a Model, Controller, Migration and Seeder for table weddings
     - Called the class WeddingSeeder to seed weddings table in the database. Made sure to comment-out the VenueSeeder to prevent any duplication. Did the same with the WeddingSeeder once it was seeded in the database
     - In the process of finishing wedding components (details and card)
-    - in the process of wedding CRUD functions - still have a few uncompleted sections
+    - In the process of wedding CRUD functions - still have a few uncompleted sections
     - Made folder to start the edit, create, show and index blade.php files
 
+- **Wednesday - 5th Nov:**
+    - Fixed a few erroors with syntax and added a few things in Wedding controller that will help me pull information from Venues table
+    - Fixed the index.blade of weddings by correcting errors in the component wedding-card.blade. 
 
 
 ## GitHub Link
