@@ -47,9 +47,8 @@ class WeddingController extends Controller
         $request->validate([
             'bride_name' => 'required|max:255',
             'groom_name' => 'required|max:255',
-            'wedding_date' => 'required|date',
+            'wedding_date_time' => 'required|datetime',
             //Request location from venue table
-            'location' => 'required|max:255',
             'venue_id' => 'required|exists:venues,id',
         ]);
 

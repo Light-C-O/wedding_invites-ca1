@@ -18,8 +18,10 @@
     - Made folder to start the edit, create, show and index blade.php files
 
 - **Wednesday - 5th Nov:**
-    - Fixed a few erroors with syntax and added a few things in Wedding controller that will help me pull information from Venues table
-    - Fixed the index.blade of weddings by correcting errors in the component wedding-card.blade. 
+    - Fixed a few errors with syntax and added a few things in Wedding controller that will help me pull information from Venues table
+    - Fixed the index.blade of weddings by correcting errors in the component wedding-card.blade.
+    - Managed to replace venue_id to the actual name by pulling the title from the venue table.
+    - Finished the show.blade of weddings.
 
 
 ## GitHub Link

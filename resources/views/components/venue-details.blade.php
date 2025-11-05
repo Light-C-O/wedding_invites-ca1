@@ -1,4 +1,4 @@
-@props(['title', 'location', 'capacity', 'price', 'image', 'description'])
+@props(['title', 'location', 'capacity', 'price', 'image', 'description', 'venue'])
 
 <!-- Venue Detail -->
 <div  iv class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
@@ -32,7 +32,7 @@
                     <p class="text-gray-700 dark:text-gray-100 leading-relaxed">{{ $description }}</p> <!-- Text is spaced out for readability -->
                 <!-- end description -->
             </div>
-            <!-- Locstion & Price -->
+            <!-- Location, Capacity & Weddings -->
             <div class="text-gray-500 dark:text-gray-100 text-base font-bold mb-4 italic">
                 <!-- Venue Location -->
                     <!-- Emphasizing location with italics and smaller text -->
@@ -43,6 +43,13 @@
                     <!-- Emphasizing capacity with italics and smaller text -->
                     <h2>Capacity: {{ $capacity }} people</h2>
                 <!-- end capacity -->
+
+                <!--No. of weddings-->
+                    <div class="text-end">
+                        <!-- Display the number of weddings booked for this venue -->
+                            <h2 class="text-gray-900 dark:text-gray-100 text-base font-bold italic">Currently booked for {{ $venue->weddings->count() }} wedding(s)</h2>
+                    </div>
+                <!-- end no. weds -->
             </div>
         </div>
     </div>

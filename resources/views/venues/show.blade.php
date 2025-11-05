@@ -13,7 +13,7 @@
                 <div class="p-6 text-grey-900 dark:text-gray-100">
                     <h3 class="font-semibold text-lg mb-4">Venue Details:</h3>
                         <!-- Display detailed information about the venue using the venue-details component -->
-                        <x-venue-details
+                        <x-venue-details :venue=$venue
                             :title="$venue->title"
                             :image="$venue->image"
                             :price="$venue->price"
@@ -25,14 +25,6 @@
                         <!-- Back to venues index button -->
                         <a href="{{ route('venues.index') }}" class="bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Back to Venues</a>
 
-                        <div class="text-end">
-                            <!--No. of weddings-->
-                            <!-- Display the number of weddings booked for this venue -->
-                            <h2 class="text-gray-900 dark:text-gray-100 text-base font-bold italic">Currently booked for {{ $venue->weddings->count() }} wedding(s)</h2>
-                            <!-- No. of current guests-->
-                            <!-- <h2 class="text-gray-500 dark:text-gray-100 text-base font-bold italic">Total guests for all weddings: 
-                                {{ $venue->weddings->sum('guest_count') }} -->
-                        </div>
                         </div>
                         <!-- Edit and delete button -->
                         <div class=" mt-4 flex space-x-2 place-content-center">

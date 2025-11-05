@@ -16,18 +16,14 @@
                         <x-wedding-details
                             :bride_name="$wedding->bride_name"
                             :groom_name="$wedding->groom_name"
-                            :location="$wedding->location"
+                            :venue_id="$wedding->venue_id"
+                            :best_man="$wedding->best_man"
+                            :maid_of_honor="$wedding->maid_of_honor"
                             :wedding_date_time="$wedding->wedding_date_time"
                         />
                         <div>
                         <!-- Back to weddings index button -->
                         <a href="{{ route('weddings.index') }}" class="bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Back to Weddings</a>
-
-                        <div class="text-end">
-                            <!-- No. of current guests-->
-                            <!-- <h2 class="text-gray-500 dark:text-gray-100 text-base font-bold italic">Total guests for all weddings: 
-                                {{ $wedding->weddings->sum('guest_count') }} -->
-                        </div>
                         </div>
                         <!-- Edit and delete button -->
                         <div class=" mt-4 flex space-x-2 place-content-center">

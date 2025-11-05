@@ -1,32 +1,29 @@
-@props(['bride_name', 'groom_name', 'location', 'wedding_date_time'])
+@props(['bride_name', 'groom_name', 'venue_id', 'maid_of_honor', 'best_man', 'wedding_date_time'])
 
-<?php
-//pull location from the venue table
-use App\Models\Venue;
-$venues = Venue::find($wedding->venue_id);
-?>
+@php
+    use App\Models\Venue;
+    $venue = Venue::find($venue_id);
+@endphp
 
 <!-- Wedding Detail -->
 <div  iv class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
 
-    <!-- Wedding Title -->
-    <h1 class="font-bold text-black-600 dark:text-gray-100 mb-2" style="font-size: 3rem;">{{$bride_name}} and {{groom_name}};s Wedding</h1> <!-- Heading with larger text and color -->
-    <!-- end title -->
+    <!-- Wedding bride and groom -->
+    <h1 class=" text-center font-bold text-black-600 dark:text-gray-100 mb-2" style="font-size: 2rem;">{{$bride_name}} and {{$groom_name}}'s Wedding</h1> <!-- Heading with larger text and color -->
+    <!-- end weding b&g -->
     
     <!-- Wedding Info -->
-    <div class="flex items-center gap-6">
-        
-        <div class="flex-1">
-            <!-- Wedding Price -->
-                <h2 class="text-gray-900 dark:text-gray-100 text-sm mb-4 underline decoration-solid" style="font-size: 1.5rem;">Price: €{{ $price }}</h2>
-            <!-- end price -->
 
-            <!-- Wedding Image -->
-                <div class="overflow-hidden rounded-lg mb-4 flex justify-center">
-                    <!-- Image is further restricted to a smaller size -->
-                    <img src="{{ asset('images/venues/' . $image) }}" alt="{{ $title }}" class="w-full max-w-xl h-auto object-cover"> <!-- Restrict image to max-w-xs (20rem) and ensure responsiveness -->
-                </div>
-            <!-- end image -->
+        
+        <div class="flex-1 ">
+            <h2 class="text-center underline decoration-solid" style="font-size: 1.5rem">Special Guest(s):</h2>
+            <!-- Wedding bestman -->
+                    <p class="text-center text-gray-900 dark:text-gray-100"> Best Man: {{$best_man ? $best_man : ''}}</p>
+            <!-- end bm -->
+
+            <!-- Wedding maid of honour -->
+                    <p class="text-center text-gray-900 dark:text-gray-100">Maid of Honour: {{$maid_of_honor ? $maid_of_honor : ''}}</p>
+            <!-- end moh -->
         </div>
 
         <!-- Content -->
@@ -34,23 +31,28 @@ $venues = Venue::find($wedding->venue_id);
 
             <div class="mb-4">
                 <!-- Wedding Description -->
-                    <h3 class="text-gray-800 dark:text-gray-100 font-semibold mb-2" style="font-size: 2rem;">Why here?</h3> <!-- Subheading for description -->
-                    <p class="text-gray-700 dark:text-gray-100 leading-relaxed">{{ $description }}</p> <!-- Text is spaced out for readability -->
+                    <h3 class="text-gray-800 dark:text-gray-100 font-semibold mb-2" style="font-size: 2rem;">Come with us!</h3> <!-- Subheading for description -->
+                    <p class="text-gray-700 dark:text-gray-100 leading-relaxed">We’ve found a love that lasts a lifetime,and we can’t wait to share this special moment with you. <br>
+                    Please join us as we, {{$bride_name}} and {{$groom_name}}, celebrate our wedding on 
+                    {{ \Carbon\Carbon::parse($wedding_date_time)->format('F j, Y') }} at 
+                    {{ \Carbon\Carbon::parse($wedding_date_time)->format('g:i A') }}.<br>
+                    Your love and presence mean the world to us at {{$venue ? $venue->title : 'Unknown Venue'}}.
+                    </p>
                 <!-- end description -->
             </div>
-            <!-- Locstion & Price -->
+            <!-- Locstion & Guests -->
             <div class="text-gray-500 dark:text-gray-100 text-base font-bold mb-4 italic">
                 <!-- Wedding Location -->
-                    <!-- Emphasizing location with italics and smaller text -->
-                    <h2>Location: {{ $location }}</h2>
+                    <!-- Pulled the location from Venue table -->
+                    <h2>Location: {{ $venue->location }}</h2>
                 <!-- end location -->
 
                 <!-- Wedding Capacity -->
-                    <!-- Emphasizing capacity with italics and smaller text -->
-                    <h2>Capacity: {{ $capacity }} people</h2>
+                    <!-- No. of current guests-->
+                        <!-- <h2 class="text-gray-500 dark:text-gray-100 text-base font-bold italic">Total guests for all weddings: {{ $venue->weddings->sum('guest_count') }} of {{ $venue->capacity}} -->
                 <!-- end capacity -->
             </div>
         </div>
-    </div>
+
     <!-- end info -->
 </div
