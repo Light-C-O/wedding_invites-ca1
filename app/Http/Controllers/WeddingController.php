@@ -60,8 +60,8 @@ class WeddingController extends Controller
 
         Wedding::create([
                 'bride-name' => $request->bride_name,
-                
-
+                'groom_name' => $request->groom_name,
+                'wedding_date_time' => $request->wedding_date_time,
                 'created_at' => now(),
                 'updated_at' => now()
         ]);

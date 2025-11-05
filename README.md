@@ -22,6 +22,7 @@
     - Fixed the index.blade of weddings by correcting errors in the component wedding-card.blade.
     - Managed to replace venue_id to the actual name by pulling the title from the venue table.
     - Finished the show.blade of weddings.
+    - In the process of create.
 
 
 ## GitHub Link

@@ -1,0 +1,98 @@
+
+<form action="{{ $action }}" method="POST" enctype="multipart/form-data">
+    <!-- It's required in every Laravel form -->
+    @csrf
+    <!-- HTML forms don’t support PUT/PATCH, so Laravel uses this trick. -->
+    @if($method === 'PUT' || $method === 'PATCH')
+        @method($method)
+    @endif
+
+    <!-- Title -->
+    <div class="mb-4">
+        <label for="title" class="block text-sm text-gray-700">Title</label>
+        <!-- This says that 'title' is required. If form is being reloaded (like after a validation error), it shows the previous input (old('title')). Otherwise, it shows the venue's current title (if you'rer editing). If there is no value, it is blank. -->
+        <input
+        type="text"
+        name="title"
+        id="title"
+        value="{{ old('title', $venue->title ?? '') }}"
+        required
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+        <!-- If there is a error for the title, this shows the error message in red, stating that is not valid. -->
+        @error('title')
+        <p class="text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <!-- Location -->
+    <div class="mb-4">
+        <label for="location" class="block text-sm text-gray-700">Location</label>
+        <!-- Similar to title, it checks for old input or existing venue location -->
+        <input
+        type="text"
+        name="location"
+        id="location"
+        value="{{ old('location', $venue->location ?? '') }}"
+        required
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+        <!-- Throw an error is requiremtns is not met -->
+        @error('location')
+        <p class="text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <!-- Price -->
+    <div class="mb-4">
+        <label for="price" class="block text-sm text-gray-700">Price</label>
+        <input
+        type="float"
+        name="price"
+        id="price"
+        value="{{ old('price', $venue->price ?? '') }}"
+        required
+        class="p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+        @error('price')
+        <p class="text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <!-- Capacity -->
+    <div class="mb-4">
+        <label for="capacity" class="block text-sm text-gray-700">Capacity</label>
+        <input
+        type="integer"
+        name="capacity"
+        id="capacity"
+        value="{{ old('capacity', $venue->capacity ?? '') }}"
+        required
+        class="p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+        @error('capacity')
+        <p class="text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
+    
+    <div>
+        <!-- If you're editing a venue,($venue is set) the button says 'Update Venue' otherwise, 'Add Venue' since you are creating one  -->
+        <x-primary-button class="gap-4">
+            <!-- in order to edit a venue, $venue must not be empty -->
+            @if($venue !== null)
+                <p>{{ 'Update Venue' }}</p>
+                <!-- The cancel button -->
+                <button class="bg-[#aebb98] hover:bg-[#aeb8be] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#959c88] hover:border-[#7e8f9b] rounded transition ease-in-out duration-150">
+                    <!-- Redirects to the venue's detail page -->
+                    <a href="{{ route('venues.show', ['venue' => $venue->id]) }}">Go Back</a>
+                </button>
+            <!-- if $venue is null then add a new one -->
+            @else
+                <p>{{ 'Add Venue' }}</p>
+                <!-- The cancel button -->
+                <button class="bg-[#aebb98] hover:bg-[#aeb8be] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#959c88] hover:border-[#7e8f9b] rounded transition ease-in-out duration-150">
+                    <!--redirects to the venues list page -->
+                    <a href="{{ route('venues.index') }}">Go Back</a>
+                </button>
+            @endif
+
+        </x-primary-button>
+    </div>
+</form>
