@@ -6,6 +6,19 @@
 
         <title>{{ config('app.name', 'Venue Resort') }}</title>
 
+        <!-- Made an attempt to immediately set theme before the page renders -->
+        
+        <!-- <script>
+            (function() {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark' || 
+                    (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            })();
+        </script> -->
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
