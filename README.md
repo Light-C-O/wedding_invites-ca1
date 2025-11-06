@@ -32,6 +32,7 @@
     - I made a new mirgation that makes few colomns nullable in weddings table, meaning it is an option to fill them - not a requirement.
     - Completed the create of CRUD operations.
     - Offically completed the CRUD functions of Weddings.
+    - I fixed the errors for the if statement concering User or Admin. I made mention the role column with the 'user' or 'admin in it'.
 
 
 ## GitHub Link
