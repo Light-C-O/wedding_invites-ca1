@@ -80,7 +80,7 @@
                 <button class="me-4 dark:text-white text-dark p-2 border-gray-900 dark:border-gray-100 border-2 rounded-xl" id='dark_toggle_mobile'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
                 </button>
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-100 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-800 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -97,10 +97,18 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('venues.index')" :active="request()->routeIs('venues.index')">
+            <!-- Venues -->
                 {{ __('View All Venues') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('venues.create')" :active="request()->routeIs('venues.create')">
                 {{ __('Create Venues') }}
+            </x-responsive-nav-link>
+            <!-- Weddings -->
+            <x-responsive-nav-link :href="route('weddings.index')" :active="request()->routeIs('weddings.index')">
+                {{ __('View All Weddings') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('weddings.create')" :active="request()->routeIs('weddings.create')">
+                {{ __('Create Weddings') }}
             </x-responsive-nav-link>
         </div>
 

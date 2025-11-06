@@ -28,9 +28,12 @@ class WeddingController extends Controller
             return to_route('weddings.index')->with('error', 'You do not have permission to create a wedding.');
         }
 
+        //this is to pull information from the venues table
+        $venues = Venue::all();
+
         //this is the create function when making a new wedding
-        $wedding = null; //empty model, no data
-        return view('weddings.create', compact('wedding'));
+        $wedding = new Wedding(); //empty model, no data
+        return view('weddings.create', compact('wedding', 'venues'));
     }
 
     /**
@@ -45,10 +48,12 @@ class WeddingController extends Controller
 
         //Validate the request
         $request->validate([
-            'bride_name' => 'required|max:255',
-            'groom_name' => 'required|max:255',
-            'wedding_date_time' => 'required|datetime',
-            //Request location from venue table
+            'bride_name' => 'required|string|max:255',
+            'groom_name' => 'required|string|max:255',
+            'best_man' => 'nullable|string|max:255',
+            'maid_of_honor' => 'nullable|string|max:255',
+            'wedding_date_time' => 'required|date_format:Y-m-d\TH:i',
+            //Request title from venue table
             'venue_id' => 'required|exists:venues,id',
         ]);
 
@@ -56,17 +61,15 @@ class WeddingController extends Controller
         //Create a new wedding
 
         // Create a wedding record in the database
-    
-
         Wedding::create([
-                'bride-name' => $request->bride_name,
-                'groom_name' => $request->groom_name,
-                'wedding_date_time' => $request->wedding_date_time,
-                'created_at' => now(),
-                'updated_at' => now()
-        ]);
-        Wedding::Create([
-            request
+            'bride_name' => $request->bride_name,
+            'groom_name' => $request->groom_name,
+            'wedding_date_time' => $request->wedding_date_time,
+            'best_man' => $request->best_man,
+            'maid_of_honor' => $request->maid_of_honor,
+            'venue_id' => $request->venue_id,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
         //Return to index once create succesfully
@@ -90,6 +93,9 @@ class WeddingController extends Controller
     public function edit(Wedding $wedding)
     {
         //
+        $venues = Venue::all();
+        
+        return view('weddings.edit', compact('wedding', 'venues'));
     }
 
     /**

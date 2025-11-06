@@ -18,11 +18,11 @@
         <div class="flex-1 ">
             <h2 class="text-center underline decoration-solid" style="font-size: 1.5rem">Special Guest(s):</h2>
             <!-- Wedding bestman -->
-                    <p class="text-center text-gray-900 dark:text-gray-100"> Best Man: {{$best_man ? $best_man : ''}}</p>
+                    <p class="text-center text-gray-900 dark:text-gray-100"> Best Man: <span class="font-semibold">{{$best_man ? $best_man : '-Not Set-'}}</span></p>
             <!-- end bm -->
 
             <!-- Wedding maid of honour -->
-                    <p class="text-center text-gray-900 dark:text-gray-100">Maid of Honour: {{$maid_of_honor ? $maid_of_honor : ''}}</p>
+                    <p class="text-center text-gray-900 dark:text-gray-100">Maid of Honour: <span class="font-semibold">{{$maid_of_honor ? $maid_of_honor : '-Not Set-'}}</span></p>
             <!-- end moh -->
         </div>
 

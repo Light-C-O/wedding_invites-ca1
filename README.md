@@ -24,6 +24,14 @@
     - Finished the show.blade of weddings.
     - In the process of create.
 
+- **Thursday - 6th Nov:**
+    - Started with the create scetion.
+    - I decided to install a data and time picker - made sure that when on edit to keeps the same time and on create, it is empty.
+    - Had venue issues in pulling all the venues from the venues table. Needed to go to the controller and call a finction Venue::all() to get the venues
+    - Simplified a few if statement for clear look, and for it to easy to read and understand.
+    - I made a new mirgation that makes few colomns nullable in weddings table, meaning it is an option to fill them - not a requirement.
+    - Completed the create of CRUD operations.
+
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git
