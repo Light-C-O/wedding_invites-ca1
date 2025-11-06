@@ -43,7 +43,7 @@ class WeddingController extends Controller
     {
         //Authorization check
         if(auth()->user()->role !== 'admin'){
-            return to_route('weddings.index')->with('error', 'You do not have permission to create a wedding.');
+            return to_route('weddings.index')->with('error', 'You do not have permission to store a wedding.');
         }
 
         //Validate the request
@@ -92,10 +92,15 @@ class WeddingController extends Controller
      */
     public function edit(Wedding $wedding)
     {
-        //
+        //pulling info from venue
         $venues = Venue::all();
         
         return view('weddings.edit', compact('wedding', 'venues'));
+
+        //Authorization check
+        if(auth()->user()->role !== 'admin'){
+            return to_route('weddings.index')->with('error', 'You do not have permission to edit this wedding.');
+        }   
     }
 
     /**
@@ -104,6 +109,36 @@ class WeddingController extends Controller
     public function update(Request $request, Wedding $wedding)
     {
         //
+        $validated = $request->validate([
+            'bride_name' => 'required|string|max:255',
+            'groom_name' => 'required|string|max:255',
+            'best_man' => 'nullable|string|max:255',
+            'maid_of_honor' => 'nullable|string|max:255',
+            'wedding_date_time' => 'required|date_format:Y-m-d\TH:i',
+            //Request title from venue table
+            'venue_id' => 'required|exists:venues,id',
+        ]);
+
+        // Update the wedding
+        $wedding->update($validated);
+
+        //Update  a wedding
+        $wedding->update([
+            'bride_name' => $request->bride_name,
+            'groom_name' => $request->groom_name,
+            'wedding_date_time' => $request->wedding_date_time,
+            'best_man' => $request->best_man,
+            'maid_of_honor' => $request->maid_of_honor,
+            'venue_id' => $request->venue_id,
+        ]);
+
+        // Redirect  in the index page with the success message
+        return to_route('weddings.index')->with('success', 'Wedding has been updated successfully! 🥳');
+
+        //Authorization check
+        if(auth()->user()->role !== 'admin'){
+            return to_route('weddings.index')->with('error', 'You do not have permission to update this wedding.');
+        }   
     }
 
     /**
@@ -111,6 +146,15 @@ class WeddingController extends Controller
      */
     public function destroy(Wedding $wedding)
     {
-        //
+        //to delete a wedding
+        $wedding->delete();
+
+        // Redirect  in the index page with the success message
+        return to_route('weddings.index')->with('success', 'Wedding has been deleted successfully! 🥳');
+        
+        //Authorization check
+        if(auth()->user()->role !== 'admin'){
+            return to_route('weddings.index')->with('error', 'You do not have permission to delete this wedding.');
+        } 
     }
 }

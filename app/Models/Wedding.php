@@ -22,6 +22,10 @@ class Wedding extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+    'wedding_date_time' => 'datetime',
+    ];
+
     // Define relationship with Venue model
     public function venue()
     {

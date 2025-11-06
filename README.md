@@ -31,6 +31,7 @@
     - Simplified a few if statement for clear look, and for it to easy to read and understand.
     - I made a new mirgation that makes few colomns nullable in weddings table, meaning it is an option to fill them - not a requirement.
     - Completed the create of CRUD operations.
+    - Offically completed the CRUD functions of Weddings.
 
 
 ## GitHub Link

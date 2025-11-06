@@ -40,7 +40,7 @@ class VenueController extends Controller
 
         //Authorization check
         if(auth()->user()->role !== 'admin'){
-            return to_route('venues.index')->with('error', 'You do not have permission to create a venue.');
+            return to_route('venues.index')->with('error', 'You do not have permission to store a venue.');
         }
 
         //Validate the request
@@ -86,11 +86,6 @@ class VenueController extends Controller
     {
         //To dislplay a more indepth info on the venue you click on
         return view('venues.show')->with('venue', $venue);
-
-        //Authorization check
-        if(auth()->user()->role !== 'admin'){
-            return to_route('venues.index')->with('error', 'You do not have permission to view this venue.');
-        }
     }
 
     /**
