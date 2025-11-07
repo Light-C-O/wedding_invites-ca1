@@ -12,7 +12,7 @@
     <div class="py-12">
         <!-- Venue Creation Form Section -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-[#f8f5ed] dark:bg-[#aeaeae] overflow-hidden dark:border border-gray-900 shadow-sm sm:rounded-lg">
+            <div class=" bg-[#f8f5ed] dark:bg-[#aeaeae] overflow dark:border border-gray-900 shadow-sm sm:rounded-lg p-6 max-w-5xl mx-auto">
                 <div class="p-6 text-grey-900">
                     <!-- Form to create a new venue -->
                     <h3 class="font-semibold text-lg mb-4">Add a New Venue:</h3>

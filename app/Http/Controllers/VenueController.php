@@ -145,8 +145,8 @@ class VenueController extends Controller
             'description' => $request->description,
         ]);
 
-        // Redirect  in the index page with the success message
-        return to_route('venues.index')->with('success', 'Venue has been updated successfully! 🥳');
+        // Redirect  in the show page of the specific venue modified with the success message
+        return to_route('venues.show', $venue->id)->with('success', 'Venue has been updated successfully! 🥳');
 
         //Authorization check
         if(auth()->user()->role !== 'admin'){

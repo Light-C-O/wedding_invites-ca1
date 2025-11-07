@@ -132,8 +132,8 @@ class WeddingController extends Controller
             'venue_id' => $request->venue_id,
         ]);
 
-        // Redirect  in the index page with the success message
-        return to_route('weddings.index')->with('success', 'Wedding has been updated successfully! 🥳');
+        // Redirect  in the show page of the specific wedding modified with the success message
+        return to_route('weddings.show', $wedding->id)->with('success', 'Wedding has been updated successfully! 🥳');
 
         //Authorization check
         if(auth()->user()->role !== 'admin'){

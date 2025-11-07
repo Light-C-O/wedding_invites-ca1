@@ -35,6 +35,12 @@
     - I fixed the errors for the if statement concering User or Admin. I made mention the role column with the 'user' or 'admin in it'.
     - I have a js dark-mode toggle button, when on click it goes to dark mode. However for some reason, it goes back light when I click on another button instead of staying dark until click the js toggle button again. I found that I needed to use localStorage for it to remember the theme preference and reapply it when the page loads.
     - I made an improved verion of the dark-mode toggle, it fixed temporeraly before I found another issue. It does stay dark but it flashes light before it settles to dark-mode again everytime I click on another button. I'm not sure what could be the problem.
+  
+- **Friday - 7th Nov:**
+    - Had to fresh my migarion, what was in the sql and my dabase files were out of sync.
+    - I formated venues create and edit to make it look better.
+    - I chaged the route for the edit to rediect to the specific venue or wedding that has been modified.
+    - Concerning the dark-toggle button, it seems like depending on the screen or device youare using the light-mode flash is less obvious.
 
 
 ## GitHub Link

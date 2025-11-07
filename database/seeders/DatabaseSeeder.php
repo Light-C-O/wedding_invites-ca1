@@ -14,18 +14,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
 
+        // php artisan db:seed --class:Name
+        //Calls class seeders to the tables
         //Commented out to prevent duplicate seeding
-            // Call the VenueSeeder to seed venues table
-            $this ->call(VenueSeeder::class);
-            
-            // Call the WeddingSeeder to seed weddings table
-            $this ->call(WeddingSeeder::class);
+
+            $this->call([
+                VenueSeeder::class,
+                WeddingSeeder::class,
+                AdminSeeder::class,
+            ]);
     }
 }

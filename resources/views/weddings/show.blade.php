@@ -2,10 +2,13 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
             {{ _('All Weddings')}}
-
         </h2>
-
     </x-slot>
+
+    <x-alert-success>
+        <!-- Display success message if available -->
+        {{session('success') }}
+    </x-alert-success>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
