@@ -39,8 +39,9 @@
 - **Friday - 7th Nov:**
     - Had to fresh my migarion, what was in the sql and my dabase files were out of sync.
     - I formated venues create and edit to make it look better.
-    - I chaged the route for the edit to rediect to the specific venue or wedding that has been modified.
+    - I changed the route for the edit to rediect to the specific venue or wedding that has been modified.
     - Concerning the dark-toggle button, it seems like depending on the screen or device youare using the light-mode flash is less obvious.
+    - I decided to make it visually appealing and easy to understand. I removds the tables from the navbar and put it in the dashboard. I also make sure that only the admin can see the create, edit and delete section. I added images as icons for each table. I also invertated the colors dark-mode.
 
 
 ## GitHub Link
