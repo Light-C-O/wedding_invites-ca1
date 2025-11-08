@@ -7,7 +7,7 @@
     - Created a new attribute called role in the users table (using a migration)
     - Seed the user table with an admin user, using the command: php artisan make:seeder AdminSeeder
     - Made an admin and user role option
-  
+
 - **Tuesday - 4th Nov:**
     - Finished the user-role application
     - Made wedding table
@@ -35,7 +35,7 @@
     - I fixed the errors for the if statement concering User or Admin. I made mention the role column with the 'user' or 'admin in it'.
     - I have a js dark-mode toggle button, when on click it goes to dark mode. However for some reason, it goes back light when I click on another button instead of staying dark until click the js toggle button again. I found that I needed to use localStorage for it to remember the theme preference and reapply it when the page loads.
     - I made an improved verion of the dark-mode toggle, it fixed temporeraly before I found another issue. It does stay dark but it flashes light before it settles to dark-mode again everytime I click on another button. I'm not sure what could be the problem.
-  
+
 - **Friday - 7th Nov:**
     - Had to fresh my migarion, what was in the sql and my dabase files were out of sync.
     - I formated venues create and edit to make it look better.
@@ -45,6 +45,9 @@
     - Modified the login.blade, register.blade and guest.blade to make a dark-mode option. I added go back button for the registetion and refirect to the login page.
     - I used colon on the value (:value) in forms so that on reload, the input stays there. I added this in the image so the image doesn't disappear on reload. Only the wedding_date_time goes blank on manual reload. In order to combat this, I would have to use a bit of Javascript and localstorage. This insures that whatever the user types stays in the field even after a full page reload. It only resets if they clear their browser storage. I decided not to add it as it is not a significant issue.
     - Modified the mobile version
+
+- **Saturday - 8th Nov:**
+    - I found the responsive-nav-link.blade.php it tooka while to find the correct file to change the colours of the dropdoen on mobile format.
 
 
 ## GitHub Link
