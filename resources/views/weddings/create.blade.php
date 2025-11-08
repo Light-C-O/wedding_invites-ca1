@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-grey-800 dark:text-gray-100 leading-tight">
+        <h2 class="font-semibold text-2xl text-grey-800 dark:text-gray-100 leading-tight text-center">
             <!-- Header for the Create New Weddings page -->
             {{ _('Create New Weddings')}}
 

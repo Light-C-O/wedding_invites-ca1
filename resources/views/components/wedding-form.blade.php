@@ -18,7 +18,7 @@
                 type="text"
                 name="bride_name"
                 id="bride_name"
-                value="{{ old('bride_name', $wedding->bride_name ?? '') }}"
+                :value="{{ old('bride_name', $wedding->bride_name ?? '') }}"
                 required
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 <!-- If there is a error for the bride_name, this shows the error message in red, stating that is not valid. -->
@@ -35,7 +35,7 @@
                 type="text"
                 name="groom_name"
                 id="groom_name"
-                value="{{ old('groom_name', $wedding->groom_name ?? '') }}"
+                :value="{{ old('groom_name', $wedding->groom_name ?? '') }}"
                 required
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 <!-- If there is a error for the groom_name, this shows the error message in red, stating that is not valid. -->
@@ -71,7 +71,7 @@
                         <!-- a loop to dispaly an new venue from the Venue::find() if added -->
                         @foreach($venues as $venue)
                             <!-- make an option to shows each new venue title -->
-                            <option value="{{$venue->id}}" {{ old('venue_id', $wedding?->venue_id) == $venue->id ? 'selected' : '' }}> 
+                            <option :value="{{$venue->id}}" {{ old('venue_id', $wedding?->venue_id) == $venue->id ? 'selected' : '' }}> 
                                 {{$venue->title}}
                             </option>
                         @endforeach
@@ -88,7 +88,7 @@
                 type="text"
                 name="best_man"
                 id="best_man"
-                value="{{ old('best_man', $wedding->best_man ?? '') }}"
+                :value="{{ old('best_man', $wedding->best_man ?? '') }}"
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
 
@@ -100,7 +100,7 @@
                 type="text"
                 name="maid_of_honor"
                 id="maid_of_honor"
-                value="{{ old('maid_of_honor', $wedding->maid_of_honor ?? '') }}"
+                :value="{{ old('maid_of_honor', $wedding->maid_of_honor ?? '') }}"
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
         </div>

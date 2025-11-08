@@ -42,6 +42,9 @@
     - I changed the route for the edit to rediect to the specific venue or wedding that has been modified.
     - Concerning the dark-toggle button, it seems like depending on the screen or device youare using the light-mode flash is less obvious.
     - I decided to make it visually appealing and easy to understand. I removds the tables from the navbar and put it in the dashboard. I also make sure that only the admin can see the create, edit and delete section. I added images as icons for each table. I also invertated the colors dark-mode.
+    - Modified the login.blade, register.blade and guest.blade to make a dark-mode option. I added go back button for the registetion and refirect to the login page.
+    - I used colon on the value (:value) in forms so that on reload, the input stays there. I added this in the image so the image doesn't disappear on reload. Only the wedding_date_time goes blank on manual reload. In order to combat this, I would have to use a bit of Javascript and localstorage. This insures that whatever the user types stays in the field even after a full page reload. It only resets if they clear their browser storage. I decided not to add it as it is not a significant issue.
+    - Modified the mobile version
 
 
 ## GitHub Link

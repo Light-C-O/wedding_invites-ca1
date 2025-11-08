@@ -17,12 +17,10 @@
     <body class="font-sans text-gray-900 antialiased bg-[#d1cec6] dark:bg-[#a6a39c]">
         <div class=" bg-[#d1cec6] dark:bg-[#403d35] min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
-                <a href="/">
-                    <x-application-logo class=" w-20 h-20 dark:invert dark:brightness-200" />
-                </a>
+                <x-application-logo class=" w-20 h-20 dark:invert dark:brightness-200" id="dark_toggle"/>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-stone-400 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>

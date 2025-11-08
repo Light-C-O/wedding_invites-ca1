@@ -15,7 +15,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
     @endif
 
     <!-- Sections -->
-    <div class="lg:justify-center flex flex-wrap gap-8 mb-5">
+    <div class="lg:justify-center flex flex-wrap gap-6 mb-5">
         <!-- Title and Location -->
         <div class="">
             <!-- Title -->
@@ -26,7 +26,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 type="text"
                 name="title"
                 id="title"
-                value="{{ old('title', $venue->title ?? '') }}"
+                :value="{{ old('title', $venue->title ?? '') }}"
                 required
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 <!-- If there is a error for the title, this shows the error message in red, stating that is not valid. -->
@@ -43,7 +43,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 type="text"
                 name="location"
                 id="location"
-                value="{{ old('location', $venue->location ?? '') }}"
+                :value="{{ old('location', $venue->location ?? '') }}"
                 required
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 <!-- Throw an error is requiremtns is not met -->
@@ -62,7 +62,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 type="float"
                 name="price"
                 id="price"
-                value="{{ old('price', $venue->price ?? '') }}"
+                :value="{{ old('price', $venue->price ?? '') }}"
                 required
                 class="p-2 mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 @error('price')
@@ -77,7 +77,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 type="integer"
                 name="capacity"
                 id="capacity"
-                value="{{ old('capacity', $venue->capacity ?? '') }}"
+                :value="{{ old('capacity', $venue->capacity ?? '') }}"
                 required
                 class="p-2 mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 @error('capacity')
@@ -87,7 +87,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
         </div>
 
         <!-- Image and Description -->
-        <div class="">
+        <div class="flex flex-col sm:flex-col md:flex-row lg:flex-col gap-0 sm:gap-0 md:gap-6 lg:gap-0">
             <!-- Image -->
             <div class="mb-4">
                 <label for="image" class="block text-sm font-medium text-gray-700">Venue Cover Image</label>
@@ -96,6 +96,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 <input
                 type="file"
                 name="image"
+                :value="{{ old('image', $venue->image ?? '') }}"
                 id="image"
                 {{ isset($venue) ? '' : 'required' }}
                 class="mt-1 block w-64 min-h-10 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
@@ -108,11 +109,9 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
             @isset($venue->image)
                 <div class="mb-4">
                     <!-- Displays the existing venue image.asset($venue->image) gives the full URL to the image. The image has a fixed size and cropped to look neat. -->
-                    <img src="{{ asset('images/venues/' . $venue->image) }}" alt="Venue cover" class="w-24 h-32 object-cover">
+                    <img src="{{ asset('images/venues/' . $venue->image) }}" alt="Venue cover" class="w-38 h-32 object-cover">
                 </div>
             @endisset
-
-
             <!-- Description -->
             <div class="mb-4">
                 <label for="description" class="block text-sm text-gray-700">Description</label>
@@ -125,7 +124,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 id="description"
                 value="{{ old('description', $venue->description ?? '') }}"
                 required
-                class="overflow mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('description', $venue->description ?? '') }}</textarea>
+                class="overflow mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('description', $venue->description ?? '') }}</textarea>
                 @error('description')
                 <p class="text-sm text-red-600">{{ $message }}</p>
                 @enderror

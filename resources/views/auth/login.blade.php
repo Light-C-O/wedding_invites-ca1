@@ -11,10 +11,10 @@
                     @else
                         @if (Route::has('register'))
                         <div class="flex justify-between">
-                            <a href="{{ url('/') }}" class="text-base inline-block px-5 py-1.5 hover:font-bold rounded-sm text-base leading-normal">&#11160; Go Back </a>
+                            <a href="{{ url('/') }}" class="text-base inline-block py-2 hover:font-bold rounded-sm text-base leading-normal dark:text-white hover:underline underline-offset-8 decoration-2">&#11160; Go Back </a>
                             <a
                                 href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 place-self- border-[#19140035] hover:border-[#ff0dd3] border text-[#1b1b18] hover:font-bold rounded-sm text-base leading-normal">
+                                class="inline-block px-5 py-1.5 place-self- border-[#19140035] hover:border-zinc-500 border text-[#1b1b18] hover:font-bold hover:bg-slate-50 dark:border-gray-100 dark:hover:border-gray-100 dark:hover:border-1 dark:text-gray-100 dark:hover:text-gray-100 dark:hover:bg-zinc-400 rounded-sm text-base leading-normal">
                                 Register
                             </a>
                         </div>
@@ -29,16 +29,16 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-label class="dark:text-white" for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full dark:bg-zinc-300 dark:text-white" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label class="dark:text-white" for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-text-input id="password" class="block mt-1 w-full dark:bg-zinc-300 dark:text-white"
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
@@ -50,13 +50,13 @@
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                <span class="ms-2 text-sm text-gray-600 dark:text-white">{{ __('Remember me') }}</span>
             </label>
         </div>
 
         <div class="flex items-center justify-end mt-4 gap-6">
             @if (Route::has('password.request'))
-                <a class="underline text-base text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                <a class="underline text-base text-gray-600 hover:font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:text-gray-100 dark:hover:font-semibold" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
