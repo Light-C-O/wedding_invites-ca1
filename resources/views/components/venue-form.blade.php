@@ -6,7 +6,13 @@
 It uses the POST method always in HTML, even for PUT/PATCH (Laravel handles this later).
 
 enctype="multipart/form-data" is required when uploading files (like images).  -->
-<form action="{{ $action }}" method="POST" enctype="multipart/form-data">
+<form 
+    action="{{ $action }}"
+    method="POST"
+    enctype="multipart/form-data"
+    data-persist="true"
+    data-storage-prefix="{{ $venue ? 'edit_venue_' . $venue->id : 'create_venue_' }}">
+    
     <!-- It's required in every Laravel form -->
     @csrf
     <!-- HTML forms don’t support PUT/PATCH, so Laravel uses this trick. -->
@@ -26,7 +32,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 type="text"
                 name="title"
                 id="title"
-                :value="{{ old('title', $venue->title ?? '') }}"
+                value="{{ old('title', $venue->title ?? '') }}"
                 required
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 <!-- If there is a error for the title, this shows the error message in red, stating that is not valid. -->
@@ -43,7 +49,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 type="text"
                 name="location"
                 id="location"
-                :value="{{ old('location', $venue->location ?? '') }}"
+                value="{{ old('location', $venue->location ?? '') }}"
                 required
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 <!-- Throw an error is requiremtns is not met -->
@@ -62,7 +68,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 type="float"
                 name="price"
                 id="price"
-                :value="{{ old('price', $venue->price ?? '') }}"
+                value="{{ old('price', $venue->price ?? '') }}"
                 required
                 class="p-2 mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 @error('price')
@@ -77,7 +83,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 type="integer"
                 name="capacity"
                 id="capacity"
-                :value="{{ old('capacity', $venue->capacity ?? '') }}"
+                value="{{ old('capacity', $venue->capacity ?? '') }}"
                 required
                 class="p-2 mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 @error('capacity')
@@ -96,7 +102,7 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
                 <input
                 type="file"
                 name="image"
-                :value="{{ old('image', $venue->image ?? '') }}"
+                value="{{ old('image', $venue->image ?? '') }}"
                 id="image"
                 {{ isset($venue) ? '' : 'required' }}
                 class="mt-1 block w-64 min-h-10 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"

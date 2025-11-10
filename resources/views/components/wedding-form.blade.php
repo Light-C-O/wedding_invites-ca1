@@ -1,5 +1,10 @@
 @props(['action', 'method', 'wedding' => null, 'venues' => []])
-<form action="{{ $action }}" method="POST">
+<form 
+    action="{{ $action }}" 
+    method="POST"
+    data-persist="true"
+    data-storage-prefix="{{ $wedding ? 'edit_wedding_' . $wedding->id : 'create_wedding_' }}">
+    
     <!-- It's required in every Laravel form -->
     @csrf
     <!-- HTML forms don’t support PUT/PATCH, so Laravel uses this trick. -->
@@ -35,7 +40,7 @@
                 type="text"
                 name="groom_name"
                 id="groom_name"
-                :value="{{ old('groom_name', $wedding->groom_name ?? '') }}"
+                value="{{ old('groom_name', $wedding->groom_name ?? '') }}"
                 required
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 <!-- If there is a error for the groom_name, this shows the error message in red, stating that is not valid. -->
@@ -88,7 +93,7 @@
                 type="text"
                 name="best_man"
                 id="best_man"
-                :value="{{ old('best_man', $wedding->best_man ?? '') }}"
+                value="{{ old('best_man', $wedding->best_man ?? '') }}"
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
 
@@ -100,7 +105,7 @@
                 type="text"
                 name="maid_of_honor"
                 id="maid_of_honor"
-                :value="{{ old('maid_of_honor', $wedding->maid_of_honor ?? '') }}"
+                value="{{ old('maid_of_honor', $wedding->maid_of_honor ?? '') }}"
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
             </div>
         </div>

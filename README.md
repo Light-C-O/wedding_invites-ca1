@@ -40,15 +40,19 @@
     - Had to fresh my migarion, what was in the sql and my dabase files were out of sync.
     - I formated venues create and edit to make it look better.
     - I changed the route for the edit to rediect to the specific venue or wedding that has been modified.
-    - Concerning the dark-toggle button, it seems like depending on the screen or device youare using the light-mode flash is less obvious.
+    - Concerning the dark-toggle button, it seems like depending on the screen or device you are using the light-mode flash is less obvious.
     - I decided to make it visually appealing and easy to understand. I removds the tables from the navbar and put it in the dashboard. I also make sure that only the admin can see the create, edit and delete section. I added images as icons for each table. I also invertated the colors dark-mode.
+    - I discontinued the js_toggle_mobile.js as I removed it from the resonisive nav bar to the primary instead.
     - Modified the login.blade, register.blade and guest.blade to make a dark-mode option. I added go back button for the registetion and refirect to the login page.
     - I used colon on the value (:value) in forms so that on reload, the input stays there. I added this in the image so the image doesn't disappear on reload. Only the wedding_date_time goes blank on manual reload. In order to combat this, I would have to use a bit of Javascript and localstorage. This insures that whatever the user types stays in the field even after a full page reload. It only resets if they clear their browser storage. I decided not to add it as it is not a significant issue.
     - Modified the mobile version
 
 - **Saturday - 8th Nov:**
-    - I found the responsive-nav-link.blade.php it tooka while to find the correct file to change the colours of the dropdoen on mobile format.
+    - I found the responsive-nav-link.blade.php it took a while to find the correct file to change the colours of the dropdoen on mobile format.
 
+### Week 2
+- **Monday**
+    - It seems like using the colon in the value in venue and wedding-forms seem to cause issues. In the edit section, former input is not there. When I removed the colon it appeared. and it comes to the create section, the intial input goes away on manual reload. In order to fix it, I need to make js script that stores the input in localStorage. I made a js file called [all-form-persist.js]. In the script, I added the inputs that I wanted to be affected made sure that what whateever has been written gets saved in the storage so that when on reload it retores what was wriiten. I then imported it to the app.js.
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git
