@@ -49,6 +49,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('weddings', WeddingController::class);
 //
 
+// Guest Routes
+    // CRUD operations for Wedding resource - in similar fashion to Venue routes but using Route::resource for brevity
+    Route::resource('guests', GuestController::class)->middleware('auth');
+//
+
 
 
 // Authentication Routes - this provided by Laravel Breeze

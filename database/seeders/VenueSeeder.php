@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Venue;
+use App\Models\Guest;
 use Carbon\Carbon;
 
 // Seeder for populating the 'venues' table with initial data
@@ -15,7 +16,8 @@ class VenueSeeder extends Seeder
      */
     public function run(): void {
         $currentTimestamp = Carbon:: now();
-            Venue::insert([
+        
+            $venues = [
                 [
                     'title' => 'Elegant Garden Hall',
                     'location' => 'Dublin, Ireland',
@@ -76,17 +78,29 @@ class VenueSeeder extends Seeder
                     'created_at' => $currentTimestamp,
                     'updated_at' => $currentTimestamp
                 ],
-            ]);
+
+            ];
     
-    
-            foreach ($venues as $venueData){
+            // ✅ Now loop through the venues
+            foreach ($venues as $venueData) {
+                $venue = Venue::create(array_merge($venueData, [
+                    'created_at' => $currentTimestamp,
+                    'updated_at' => $currentTimestamp,
+                ]));
 
-                $venue = Venue::create(array_merge($venueData, ['created_at' => $currentTimestamp, 'created_at' => $currentTimestamp]));
-
-                // $guests = Guest::inRandomOrder()->;
-
-                $venue->authors()->attach($authors);
+                // Attach two random guests (if they exist)
+                $guests = Guest::inRandomOrder()->take(2)->pluck('id');
+                $venue->guests()->attach($guests);
             }
+    
+            // foreach ($venues as $venueData){
+
+            //     $venue = Venue::create(array_merge($venueData, ['created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp]));
+
+            //     $guests = Guest::inRandomOrder()->take(2)->pluck('id');
+
+            //     $venue->guests()->attach($guests);
+            // }
     }
 }
 

@@ -57,6 +57,7 @@
     - I was planning to make form for the user to make themselves a guest throgh clicking on the venue and then they choose the wedding.
     - I'm also trying to change the wedding path to show the wedding in the venue choosen.
     - My plann it to list the wedding when you click on the venue and on the wedding, theere's abutton that says sign-up as guest
+    - I still have issues with the display underneath the venues
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

@@ -1,6 +1,7 @@
 <?php
 use App\Models\Wedding;
-$wedding=wedding::all();
+$wedding = Wedding::all();
+
 ?>
 
 <x-app-layout>
@@ -30,22 +31,40 @@ $wedding=wedding::all();
                             :description="$venue->description"
                         />
 
-                        <div class = "grid grid-cols-3">
-                            @foreach ($weddings as $wedding)
-                                @if($wedding->venue_id === $venue->id)
+                        <h2>Weddings at {{ $venue->title }}</h2>
+                            @if($venue->weddings && $venue->weddings->count() > 0)
+                                <ul class="list-group">
+                                    @foreach($venue->weddings as $wedding)
                                     <a href="{{route('weddings.show', $wedding) }}" class="m-3">
                                         <!-- making a card to show the information -->
-
                                         <x-wedding-card
                                             :bride_name="$wedding->bride_name"
                                             :groom_name="$wedding->groom_name"
                                             :wedding_date_time="$wedding->wedding_date_time"
-                                            :venue="$wedding->venue_id"
-                                        />
+                                            :venue_id="$venue->id"
+                                        /> 
                                     </a>
-                                @endif
-                            @endforeach
-                        </div>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No weddings booked at this venue yet.</p>
+                            @endif
+                        <!-- <div class = "grid grid-cols-3">
+                            @foreach ($weddings as $wedding)
+                                @if($wedding->venue_id === $venue->id)
+                                    <a href="{{route('weddings.show', $wedding) }}" class="m-3">
+                                        making a card to show the information -->
+
+                                        <!-- <x-wedding-card
+                                            :bride_name="$wedding->bride_name"
+                                            :groom_name="$wedding->groom_name"
+                                            :wedding_date_time="$wedding->wedding_date_time"
+                                            :venue_id="$venue_id"
+                                        />
+                                    </a> -->
+                                <!-- @endif -->
+                            <!-- @endforeach -->
+                        <!-- </div> -->
 
                         <div>
                         <!-- Back to venues index button -->

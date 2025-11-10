@@ -87,9 +87,13 @@ class VenueController extends Controller
         //To dislplay a more indepth info on the venue you click on
         // return view('venues.show')->with('venue', $venue);
 
-            $weddings = $venue->weddings()->get();
+        $weddings = $venue->weddings()->get();
 
-            return view('venues.show', compact('venue', 'weddings'));
+        return view('venues.show', compact('venue', 'weddings'));
+
+        // $weddings = Wedding::where('venue_id', $venue->id)->get();
+
+        // return view('venues.show', compact('venue', 'weddings'));
     }
 
     /**
