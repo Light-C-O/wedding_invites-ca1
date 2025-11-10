@@ -51,8 +51,12 @@
     - I found the responsive-nav-link.blade.php it took a while to find the correct file to change the colours of the dropdoen on mobile format.
 
 ### Week 2
-- **Monday**
+- **Monday - 10th Nov:**
     - It seems like using the colon in the value in venue and wedding-forms seem to cause issues. In the edit section, former input is not there. When I removed the colon it appeared. and it comes to the create section, the intial input goes away on manual reload. In order to fix it, I need to make js script that stores the input in localStorage. I made a js file called [all-form-persist.js]. In the script, I added the inputs that I wanted to be affected made sure that what whateever has been written gets saved in the storage so that when on reload it retores what was wriiten. I then imported it to the app.js.
+    - I'm starting the many-to-many table. I'm trying to connect the guest table to weddings through venues as I made some kind of mix up.
+    - I was planning to make form for the user to make themselves a guest throgh clicking on the venue and then they choose the wedding.
+    - I'm also trying to change the wedding path to show the wedding in the venue choosen.
+    - My plann it to list the wedding when you click on the venue and on the wedding, theere's abutton that says sign-up as guest
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

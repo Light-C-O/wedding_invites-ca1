@@ -85,7 +85,11 @@ class VenueController extends Controller
     public function show(Venue $venue)
     {
         //To dislplay a more indepth info on the venue you click on
-        return view('venues.show')->with('venue', $venue);
+        // return view('venues.show')->with('venue', $venue);
+
+            $weddings = $venue->weddings()->get();
+
+            return view('venues.show', compact('venue', 'weddings'));
     }
 
     /**

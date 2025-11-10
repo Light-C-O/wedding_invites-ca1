@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         //It storageKeyPrefix to the value of form.dataset.storagePrefix if it exists, otherwise to form.id, and if neither is set, defaults to 'form_'
         const storageKeyPrefix = form.dataset.storagePrefix || form.id || 'form_';
         
-        //It supprts these values: text, number, float, textarea & select
+        //It supprts these values: text, number, float, textarea, select, datetime & email
         const inputs = form.querySelectorAll(
-            'input[type="text"], input[type="number"], input[type="float"], textarea, select, input[type="datetime-local"]'
+            'input[type="text"], input[type="number"], input[type="float"], textarea, select, input[type="datetime-local"] input[type="email"]'
         );
 
         // Restore the saved values from localStorage

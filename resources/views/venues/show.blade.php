@@ -1,3 +1,8 @@
+<?php
+use App\Models\Wedding;
+$wedding=wedding::all();
+?>
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-100 leading-tight text-center">
@@ -24,6 +29,24 @@
                             :capacity="$venue->capacity"
                             :description="$venue->description"
                         />
+
+                        <div class = "grid grid-cols-3">
+                            @foreach ($weddings as $wedding)
+                                @if($wedding->venue_id === $venue->id)
+                                    <a href="{{route('weddings.show', $wedding) }}" class="m-3">
+                                        <!-- making a card to show the information -->
+
+                                        <x-wedding-card
+                                            :bride_name="$wedding->bride_name"
+                                            :groom_name="$wedding->groom_name"
+                                            :wedding_date_time="$wedding->wedding_date_time"
+                                            :venue="$wedding->venue_id"
+                                        />
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+
                         <div>
                         <!-- Back to venues index button -->
                         <a href="{{ route('venues.index') }}" class="bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Back to Venues</a>

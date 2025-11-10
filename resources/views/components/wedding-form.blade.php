@@ -76,7 +76,7 @@
                         <!-- a loop to dispaly an new venue from the Venue::find() if added -->
                         @foreach($venues as $venue)
                             <!-- make an option to shows each new venue title -->
-                            <option :value="{{$venue->id}}" {{ old('venue_id', $wedding?->venue_id) == $venue->id ? 'selected' : '' }}> 
+                            <option value="{{$venue->id}}" {{ old('venue_id', $wedding?->venue_id) == $venue->id ? 'selected' : '' }}> 
                                 {{$venue->title}}
                             </option>
                         @endforeach

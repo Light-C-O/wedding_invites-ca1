@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
                 VenueSeeder::class,
                 WeddingSeeder::class,
                 AdminSeeder::class,
+                GuestSeeder::class,
             ]);
     }
 }

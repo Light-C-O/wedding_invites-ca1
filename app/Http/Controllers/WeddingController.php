@@ -31,6 +31,7 @@ class WeddingController extends Controller
         //this is to pull information from the venues table
         $venues = Venue::all();
 
+
         //this is the create function when making a new wedding
         $wedding = new Wedding(); //empty model, no data
         return view('weddings.create', compact('wedding', 'venues'));
@@ -45,6 +46,8 @@ class WeddingController extends Controller
         if(auth()->user()->role !== 'admin'){
             return to_route('weddings.index')->with('error', 'You do not have permission to store a wedding.');
         }
+        // dd($request);
+        // $venues = Venue::all();
 
         //Validate the request
         $request->validate([
@@ -71,6 +74,7 @@ class WeddingController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
 
         //Return to index once create succesfully
         return to_route('weddings.index')->with('success', 'Wedding has been created successfully! 🥳');

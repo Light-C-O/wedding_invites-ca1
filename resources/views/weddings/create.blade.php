@@ -19,7 +19,6 @@
                         <x-wedding-form
                             :action="route('weddings.store')"
                             :method="'POST'"
-                            :wedding="$wedding"
                             :venues="$venues"
                         />
                 </div>
