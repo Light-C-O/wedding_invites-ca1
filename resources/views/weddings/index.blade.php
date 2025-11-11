@@ -37,7 +37,7 @@
                                     <x-wedding-card
                                         :bride_name="$wedding->bride_name"
                                         :groom_name="$wedding->groom_name"
-                                        :venue_id="$wedding->venue->title ?? 'Unknown Venue'"
+                                        :venue="$wedding->venue ?? 'Unknown Venue'"
                                         :wedding_date_time="$wedding->wedding_date_time"
                                     />
                                 </a>

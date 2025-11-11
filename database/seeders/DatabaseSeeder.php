@@ -26,10 +26,10 @@ class DatabaseSeeder extends Seeder
         //Commented out to prevent duplicate seeding
 
             $this->call([
+                AdminSeeder::class,
+                GuestSeeder::class, //The order of the seeder matters
                 VenueSeeder::class,
                 WeddingSeeder::class,
-                AdminSeeder::class,
-                GuestSeeder::class,
             ]);
     }
 }

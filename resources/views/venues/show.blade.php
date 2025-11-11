@@ -31,40 +31,27 @@ $wedding = Wedding::all();
                             :description="$venue->description"
                         />
 
-                        <h2>Weddings at {{ $venue->title }}</h2>
-                            @if($venue->weddings && $venue->weddings->count() > 0)
-                                <ul class="list-group">
-                                    @foreach($venue->weddings as $wedding)
-                                    <a href="{{route('weddings.show', $wedding) }}" class="m-3">
-                                        <!-- making a card to show the information -->
-                                        <x-wedding-card
-                                            :bride_name="$wedding->bride_name"
-                                            :groom_name="$wedding->groom_name"
-                                            :wedding_date_time="$wedding->wedding_date_time"
-                                            :venue_id="$venue->id"
-                                        /> 
-                                    </a>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <p>No weddings booked at this venue yet.</p>
-                            @endif
-                        <!-- <div class = "grid grid-cols-3">
-                            @foreach ($weddings as $wedding)
-                                @if($wedding->venue_id === $venue->id)
-                                    <a href="{{route('weddings.show', $wedding) }}" class="m-3">
-                                        making a card to show the information -->
-
-                                        <!-- <x-wedding-card
-                                            :bride_name="$wedding->bride_name"
-                                            :groom_name="$wedding->groom_name"
-                                            :wedding_date_time="$wedding->wedding_date_time"
-                                            :venue_id="$venue_id"
-                                        />
-                                    </a> -->
-                                <!-- @endif -->
-                            <!-- @endforeach -->
-                        <!-- </div> -->
+                        <!-- For the wedding list -->
+                        <div class = "grid grid-cols-3">
+                            <h2>Weddings at {{ $venue->title }}</h2>
+                                @if($venue->weddings && $venue->weddings->count() > 0)
+                                    <ul class="list-group">
+                                        @foreach($venue->weddings as $wedding)
+                                            <a href="{{route('weddings.show', $wedding) }}" class="m-3">
+                                                <!-- making a card to show the information -->
+                                                <x-wedding-card
+                                                    :bride_name="$wedding->bride_name"
+                                                    :groom_name="$wedding->groom_name"
+                                                    :wedding_date_time="$wedding->wedding_date_time"
+                                                    :venue="$venue"
+                                                /> 
+                                            </a>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <p>No weddings booked at this venue yet.</p>
+                                @endif
+                        </div>
 
                         <div>
                         <!-- Back to venues index button -->

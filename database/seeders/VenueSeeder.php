@@ -81,7 +81,7 @@ class VenueSeeder extends Seeder
 
             ];
     
-            // ✅ Now loop through the venues
+            // Now loop through the venues
             foreach ($venues as $venueData) {
                 $venue = Venue::create(array_merge($venueData, [
                     'created_at' => $currentTimestamp,

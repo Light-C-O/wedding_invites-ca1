@@ -1,4 +1,4 @@
-@props(['bride_name', 'groom_name', 'venue_id', 'wedding_date_time'])
+@props(['bride_name', 'groom_name', 'venue', 'wedding_date_time'])
 
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
