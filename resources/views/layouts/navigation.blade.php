@@ -81,6 +81,10 @@
             <x-responsive-nav-link :href="route('weddings.index')" :active="request()->routeIs('weddings.index')">
                 {{ __('View All Weddings') }}
             </x-responsive-nav-link>
+            <!-- Guests -->
+            <x-responsive-nav-link :href="route('guests.index')" :active="request()->routeIs('guests.index')">
+                {{ __('View All Guests') }}
+            </x-responsive-nav-link>
 
             <!-- For admin only -->
             @if (auth()->user()->role === 'admin')

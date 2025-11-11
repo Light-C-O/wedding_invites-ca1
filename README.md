@@ -62,6 +62,9 @@
 - **Tuesday - 11th Nov:**
     - I fixed the foreach to dislpay wedding cards under a specfic venue that has a wedding booked for it. There were a few errors with the syntax and being consistant with the initialisation.
     - Had issues with sedding the pivot table. I fixed it by calling the GuestSeeder in DatabaseSeeder first before the VenueSeeder- order of the call matters.
+    - Starting with the Guests CRUD operations.
+    - Changed the schema in create guest mirgation that makes the email a unique, that way in the validation I can make the requirement as email.
+    - Having issues with the guest index.
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

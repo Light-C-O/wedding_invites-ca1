@@ -49,7 +49,7 @@
 
                 <!-- Wedding Capacity -->
                     <!-- No. of current guests-->
-                        <!-- <h2 class="text-gray-500 dark:text-gray-100 text-base font-bold italic">Total guests for all weddings: {{ $venue->weddings->sum('guest_count') }} of {{ $venue->capacity}} -->
+                        <h2 class="text-gray-500 dark:text-gray-100 text-base font-bold italic">Total guests for all weddings: {{ $venue->weddings->sum('guest_count') }} of {{ $venue->capacity}}
                 <!-- end capacity -->
             </div>
         </div>

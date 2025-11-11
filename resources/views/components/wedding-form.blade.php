@@ -23,7 +23,7 @@
                 type="text"
                 name="bride_name"
                 id="bride_name"
-                :value="{{ old('bride_name', $wedding->bride_name ?? '') }}"
+                value="{{ old('bride_name', $wedding->bride_name ?? '') }}"
                 required
                 class="mt-1 block w-64 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                 <!-- If there is a error for the bride_name, this shows the error message in red, stating that is not valid. -->

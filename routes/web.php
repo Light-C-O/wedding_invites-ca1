@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\WeddingController;
+use App\Http\Controllers\GuestController;
 
 
 Route::get('/', function () {
@@ -50,7 +51,7 @@ Route::middleware('auth')->group(function () {
 //
 
 // Guest Routes
-    // CRUD operations for Wedding resource - in similar fashion to Venue routes but using Route::resource for brevity
+    // CRUD operations for Guest resource - in similar fashion to Venue routes but using Route::resource for brevity
     Route::resource('guests', GuestController::class)->middleware('auth');
 //
 

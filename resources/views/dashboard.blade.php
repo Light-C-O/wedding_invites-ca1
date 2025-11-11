@@ -39,7 +39,7 @@
 
                 <!-- Guest -->
                 <div class="justify-center bg-white dark:bg-[#7c7467] overflow-hidden shadow-sm sm:rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-500 p-6">
-                    <a href="{{ route('weddings.index') }}" class="inline-block text-center uppercase font-bold text-gray-900 dark:text-gray-100" >
+                    <a href="{{ route('guests.index') }}" class="inline-block text-center uppercase font-bold text-gray-900 dark:text-gray-100" >
                         {{ __('Guests') }}
                         <img src="\images\guest_logo_dashboard.png" class="dark:invert w-64 h-auto mt-5" alt="guests_dashboard">
                     </a>
