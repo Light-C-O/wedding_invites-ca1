@@ -85,7 +85,9 @@ class GuestController extends Controller
         //get all guests
         $guests = Guest::all();
         $guestVenues = $guest->venues->pluck('id')->toArray(); //id of associated venues
-        return view('guests.edit', compact('guest', 'venues', 'guestVenues'));
+        $venues = $guest->venues; // Eloquent relationship
+        $wedding = $guest->wedding;
+        return view('guests.edit', compact('guest', 'venues', 'guestVenues', 'wedding'));
     }
 
     /**

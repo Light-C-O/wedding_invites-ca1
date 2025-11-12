@@ -1,4 +1,4 @@
-@props(['first_name', 'last_name', 'venues', 'email', 'plus1'])
+@props(['first_name', 'last_name', 'venues', 'email', 'plus1', 'guest'])
 
 <!-- Guest Detail -->
 <div  iv class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
@@ -37,6 +37,20 @@
                             <!-- Email -->
                                 <p>Email: {{ $email }}</p>
                             <!-- end email -->
+                        </div>
+
+                        <!-- Edit and delete button -->
+                        <div class="flex space-x-2 place-content-end">
+                            <!-- Edit button to got to the guests.edit -->
+                            <a href= "{{ route('guests.edit', $guest) }}" class="bg-green-500
+                            hover:bg-green-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-600 rounded transition ease-in-out duration-150">Edit the Invite</a>
+
+                            <!-- Delete button -->
+                            <form action="{{ route('guests.destroy', $guest) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this guest?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-[#987e82] hover:bg-[#9f9798] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#6a585b] hover:border-[#585e5f] rounded transition ease-in-out duration-150">Delete the Invite</button>
+                            </form>
                         </div>
                 </div>
                 <!-- end info -->

@@ -22,23 +22,23 @@
                         :venues="$guest->venues"
                         :plus1="$guest->plus1"
                         :email="$guest->email"
+                        :guest="$guest"
                     />
                     <div>
                     <!-- Back to guests index button -->
                     <a href="{{ route('guests.index') }}" class="bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Back to Guests</a>
                     </div>
-                    
-                    <!-- Edit and delete button -->
+                    <!-- Edit and delete button of guest-->
                     <div class="flex space-x-2 place-content-center">
                         <!-- Edit button to got to the guests.edit -->
                         <a href= "{{ route('guests.edit', $guest) }}" class="bg-green-500
-                        hover:bg-green-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-600 rounded transition ease-in-out duration-150">Edit</a>
+                        hover:bg-green-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-600 rounded transition ease-in-out duration-150">Edit the Guest</a>
 
                         <!-- Delete button -->
                         <form action="{{ route('guests.destroy', $guest) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this guest?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-[#987e82] hover:bg-[#9f9798] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#6a585b] hover:border-[#585e5f] rounded transition ease-in-out duration-150">Delete</button>
+                            <button type="submit" class="bg-[#987e82] hover:bg-[#9f9798] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#6a585b] hover:border-[#585e5f] rounded transition ease-in-out duration-150">Delete the guest</button>
                         </form>
                     </div>
                 </div>
