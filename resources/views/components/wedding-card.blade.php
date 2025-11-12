@@ -14,6 +14,6 @@
     <!-- Wedding date and time -->
     <div class="flex justify-between mt-4">
         <p class="text-gray-700 dark:text-gray-300">Date: {{ \Carbon\Carbon::parse($wedding_date_time)->format('F j, Y') }}</p>
-        <p>Time: {{ \Carbon\Carbon::parse($wedding_date_time)->format('g:i A') }}</p>
+        <p class="ml-4">Time: {{ \Carbon\Carbon::parse($wedding_date_time)->format('g:i A') }}</p>
     </div>
 </div>

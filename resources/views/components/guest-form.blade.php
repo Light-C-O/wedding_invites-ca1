@@ -55,7 +55,7 @@
         <div class="">
             <!-- email -->
             <div class="mb-4">
-                <label for="email" class="block text-sm text-gray-700">Best Man</label>
+                <label for="email" class="block text-sm text-gray-700">Email</label>
                 <!-- Similar to last_name, it checks for old input or existing guest email -->
                 <input
                 type="text"
@@ -67,7 +67,7 @@
 
             <!-- plus1 -->
             <div class="mb-4">
-                <label for="plus1" class="block text-sm text-gray-700">Maid of Honour</label>
+                <label for="plus1" class="block text-sm text-gray-700">Plus One</label>
                 <!-- Similar to email, it checks for old input or existing guest maid_of_honor -->
                 <input
                 type="text"

@@ -20,10 +20,10 @@
                 </div>
             <div class="bg-[#adb2a5] dark:bg-[#6a6e63] overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <div class="flex justify-between">
-                        <h3 class="font-semibold text-lg">List of Venues:</h3>
+                    <div class="flex justify-between font-semibold">
+                        <h3 class="text-lg content-center">List of Venues:</h3>
                         @if (auth()->user()->role === 'admin')
-                            <div class="flex justify-end text-gray-900 font-semibold uppercase dark:text-gray-100" >
+                            <div class="uppercase" >
                                 <a href="{{ route('venues.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('venues.create')">
                                 {{ __('Create Venues') }}</a>
                             </div>

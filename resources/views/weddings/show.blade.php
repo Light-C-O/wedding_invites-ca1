@@ -14,7 +14,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" bg-[#adb2a5] dark:bg-[#6a6e63] overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 pb-2 text-grey-900 dark:text-gray-100">
-                    <h3 class="font-semibold text-lg mb-4">Wedding Details:</h3>
+                    <div class="flex justify-between font-semibold mb-4">
+                        <h3 class="text-lg content-center">Wedding Details:</h3>
+                        <!-- Back to weddings index button -->
+                        <a href="{{ route('weddings.index') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 uppercase" :active="request()->routeIs('weddings.create')">All Weddings</a>
+                    </div>
                         <!-- Display detailed information about the wedding using the wedding-details component -->
                         <x-wedding-details
                             :bride_name="$wedding->bride_name"
@@ -25,9 +29,6 @@
                             :wedding_date_time="$wedding->wedding_date_time"
                         />
                         <div>
-                        <!-- Back to weddings index button -->
-                        <a href="{{ route('weddings.index') }}" class="bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Back to Weddings</a>
-                        </div>
                         @if (Auth::check() && Auth::user()->role !== 'user')
                             <!-- Edit and delete button -->
                             <div class="flex space-x-2 place-content-center">

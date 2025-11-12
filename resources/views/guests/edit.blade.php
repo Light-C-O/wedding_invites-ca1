@@ -18,7 +18,7 @@
                     <h3 class="font-semibold text-lg mb-5">Edit Guest:</h3>
                         <!-- This lets users update (edit) a venue. It sends the updated info using a PUT request to the correct URL for that specific venue. -->
                         <x-guest-form
-                            :action="route('weddings.update', $guest)"
+                            :action="route('guests.update', $guest)"
                             :method="'PUT'"
                             :guest="$guest"
                             :venues="$venues"

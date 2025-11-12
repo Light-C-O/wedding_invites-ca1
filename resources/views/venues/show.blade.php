@@ -20,9 +20,15 @@ $wedding = Wedding::all();
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class=" bg-[#adb2a5] dark:bg-[#6a6e63] overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 pb-2 text-grey-900 dark:text-gray-100">
-                    <h3 class="font-semibold text-lg mb-4">Venue Details:</h3>
+                    <div class="flex justify-between font-semibold mb-4">
+                    <h3 class="text-lg content-center">Venue Details:</h3>
+                    <!-- Back to venues index button -->
+                    <a href="{{ route('venues.index') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 uppercase" :active="request()->routeIs('venues.create')">All Venues</a>
+                </div>
+                    
                         <!-- Display detailed information about the venue using the venue-details component -->
-                        <x-venue-details :venue=$venue
+                        <x-venue-details 
+                            :venue="$venue"
                             :title="$venue->title"
                             :image="$venue->image"
                             :price="$venue->price"
@@ -30,47 +36,46 @@ $wedding = Wedding::all();
                             :capacity="$venue->capacity"
                             :description="$venue->description"
                         />
+                </div>
+                
+                @if (Auth::check() && Auth::user()->role !== 'user')
+                    <!-- Edit and delete button -->
+                    <div class="flex space-x-2 place-content-center">
+                        <!-- Edit button to got to the venues.edit -->
+                        <a href= "{{ route('venues.edit', $venue) }}" class="bg-green-500
+                        hover:bg-green-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-600 rounded transition ease-in-out duration-150">Edit</a>
 
-                        <!-- For the wedding list -->
-                        <div class = "grid grid-cols-3">
-                            <h2>Weddings at {{ $venue->title }}</h2>
-                                @if($venue->weddings && $venue->weddings->count() > 0)
-                                    <ul class="list-group">
-                                        @foreach($venue->weddings as $wedding)
-                                            <a href="{{route('weddings.show', $wedding) }}" class="m-3">
-                                                <!-- making a card to show the information -->
-                                                <x-wedding-card
-                                                    :bride_name="$wedding->bride_name"
-                                                    :groom_name="$wedding->groom_name"
-                                                    :wedding_date_time="$wedding->wedding_date_time"
-                                                    :venue="$venue"
-                                                /> 
-                                            </a>
-                                        @endforeach
-                                    </ul>
-                                @else
-                                    <p>No weddings booked at this venue yet.</p>
-                                @endif
-                        </div>
+                        <!-- Delete button -->
+                        <form action="{{ route('venues.destroy', $venue) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this venue?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-[#987e82] hover:bg-[#9f9798] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#6a585b] hover:border-[#585e5f] rounded transition ease-in-out duration-150">Delete</button>
+                        </form>
+                    </div>
+                @endif
 
-                        <div>
-                        <!-- Back to venues index button -->
-                        <a href="{{ route('venues.index') }}" class="bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Back to Venues</a>
-                        </div>
-                        @if (Auth::check() && Auth::user()->role !== 'user')
-                            <!-- Edit and delete button -->
-                            <div class="flex space-x-2 place-content-center">
-                                <!-- Edit button to got to the venues.edit -->
-                                <a href= "{{ route('venues.edit', $venue) }}" class="bg-green-500
-                                hover:bg-green-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-600 rounded transition ease-in-out duration-150">Edit</a>
-
-                                <!-- Delete button -->
-                                <form action="{{ route('venues.destroy', $venue) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this venue?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-[#987e82] hover:bg-[#9f9798] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#6a585b] hover:border-[#585e5f] rounded transition ease-in-out duration-150">Delete</button>
-                                </form>
-                            </div>
+                <!-- For the wedding list -->
+                <div class = "mt-5">
+                    <h2 class="font-bold uppercase text-lg underline decoration-double">List of weddings at {{ $venue->title }}:</h2>
+                        @if($venue->weddings && $venue->weddings->count() > 0)
+                            <ul class="list-group flex">
+                                @foreach($venue->weddings as $wedding)
+                                    <div class=" flex justify-between items-start m-3 mt-2 relative">
+                                        <!-- Create guest button -->
+                                        <a href="{{ route('guests.create') }}" class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Sign me up!</a>
+                                        
+                                        <!-- making a card to show the information -->
+                                        <x-wedding-card
+                                            :bride_name="$wedding->bride_name"
+                                            :groom_name="$wedding->groom_name"
+                                            :wedding_date_time="$wedding->wedding_date_time"
+                                            :venue="$venue"
+                                        />
+                                    </div>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p>No weddings booked at this venue yet.</p>
                         @endif
                 </div>
             </div>
