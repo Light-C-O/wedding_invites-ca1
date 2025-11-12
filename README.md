@@ -66,5 +66,9 @@
     - Changed the schema in create guest mirgation that makes the email a unique, that way in the validation I can make the requirement as email.
     - Having issues with the guest index.
 
+- **Wednesday - 12th Nov:**
+    - I fixed the guest index and card. The problem was that $venues in the guest is a collection and trying to access a property called title on a collection is not possible since a guest can go to many venues. I can show al titles through a loop or join all vneue titles through string with a comma to separate.
+    - Finished the guest show.blade and details.blade.
+
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

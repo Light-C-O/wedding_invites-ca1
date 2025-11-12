@@ -6,7 +6,7 @@
 @endphp
 
 <!-- Wedding Detail -->
-<div  iv class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
+<div  iv class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
 
     <!-- Wedding bride and groom -->
     <h1 class=" text-center font-bold text-black dark:text-gray-100 mb-2" style="font-size: 2rem;">{{$bride_name}} and {{$groom_name}}'s Wedding</h1> <!-- Heading with larger text and color -->

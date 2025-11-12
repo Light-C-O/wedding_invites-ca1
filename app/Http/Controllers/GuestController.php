@@ -70,10 +70,11 @@ class GuestController extends Controller
      */
     public function show(Guest $guest)
     {
-        //
-        $guest->load('venues');
+        //Eager load venues and weddings for each venue
+        $guest->load('venues.weddings');
 
         return (view('guests.show', compact('guest')));
+        
     }
 
     /**

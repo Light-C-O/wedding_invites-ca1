@@ -18,7 +18,13 @@ class Guest extends Model
 
         public function venues()
     {
-        // Each guest belongs to many venues
-        return $this->belongsToMany(Venue::class);
+        // Each guest can belong to many venues
+        return $this->belongsToMany(Venue::class, 'guest_venue');
     }
+
+    //     public function wedding()
+    // {
+    //     // Each guest belongs to many venues
+    //     return $this->hasOne(Wedding::class);
+    // }
 }

@@ -33,7 +33,7 @@ class Venue extends Model
     public function guests()
     {
         //One venue can host many guets
-        return $this->belongsToMany(Guest::class);
+        return $this->belongsToMany(Guest::class, 'guest_venue');
     }
 
 }
