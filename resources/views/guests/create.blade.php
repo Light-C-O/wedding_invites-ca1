@@ -1,3 +1,7 @@
+@php
+    $venueId = request('venue');
+    $weddingId = request('wedding');
+@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-2xl text-grey-800 dark:text-gray-100 leading-tight text-center">
@@ -20,8 +24,8 @@
                         <x-guest-form
                             :action="route('guests.store', $guest)"
                             :method="'POST'"
-                            :venues="$venues"
-                            :wedding="wedding"
+                            :venue="$venue" 
+                            :wedding="$wedding" 
                         />
                 </div>
             </div>

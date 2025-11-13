@@ -21,7 +21,6 @@
                             :action="route('guests.update', $guest)"
                             :method="'PUT'"
                             :guest="$guest"
-                            :venues="$venues"
                         />
                 </div>
             </div>

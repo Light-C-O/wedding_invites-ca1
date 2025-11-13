@@ -62,7 +62,7 @@ $wedding = Wedding::all();
                                 @foreach($venue->weddings as $wedding)
                                     <div class=" flex justify-between items-start m-3 mt-2 relative">
                                         <!-- Create guest button -->
-                                        <a href="{{ route('guests.create') }}" class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Sign me up!</a>
+                                        <a href="{{ route('guests.create', ['venue' => $venue->id, 'wedding' => $wedding->id]) }}" class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Sign me up!</a>
                                         
                                         <!-- making a card to show the information -->
                                         <x-wedding-card

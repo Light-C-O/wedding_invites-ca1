@@ -1,4 +1,4 @@
-@props(['first_name', 'last_name', 'venues', 'email', 'plus1', 'guest'])
+@props(['first_name', 'last_name', 'venues[]', 'email', 'plus1', 'guest'])
 
 <!-- Guest Detail -->
 <div  iv class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
@@ -9,6 +9,7 @@
     </div>
 
         @foreach($venues as $venue)
+            <h1>Venue: {{ $venue->title }}</h1>
             @foreach($venue->weddings as $wedding)
                 <!-- Guest Info -->
                 <div class="bg-white mb-5 border rounded-lg border-[#adb2a5] border-5 dark:bg-[#adb2a5] p-6">

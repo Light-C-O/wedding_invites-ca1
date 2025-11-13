@@ -20,15 +20,6 @@
                 </div>
             <div class="bg-[#adb2a5] dark:bg-[#6a6e63] overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <!-- <div class="flex justify-between">
-                        <h3 class="font-semibold text-lg">List of Guests:</h3>
-                        @if (auth()->user()->role === 'admin')
-                            <div class="flex justify-end text-gray-900 font-semibold uppercase dark:text-gray-100" >
-                                <a href="{{ route('weddings.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('weddings.create')">
-                                {{ __('Create Guests') }}</a>
-                            </div>
-                        @endif
-                    </div> -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-5 mt-5">
                         <!-- Loop through each guest and display it using the guest-card component -->
                         
@@ -37,19 +28,13 @@
                                     <x-guest-card
                                         :first_name="$guest->first_name"
                                         :last_name="$guest->last_name"
-                                        :wedding="$guest->wedding"
                                         :venues="$guest->venues"
+                                        :weddings="$guest->venues->pluck('weddings')->flatten()"
                                         :plus1="$guest->plus1"
                                     />
                                 </a>
                         @endforeach
                     </div>
-                    <!-- @if (auth()->user()->role === 'admin')
-                        <div class="flex justify-end text-gray-900 font-semibold uppercase dark:text-gray-100" >
-                            <a href="{{ route('weddings.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('weddings.create')">
-                            {{ __('Create Guests') }}</a>
-                        </div>
-                    @endif -->
                 </div>
             </div>
         </div>

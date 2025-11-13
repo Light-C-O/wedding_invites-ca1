@@ -20,6 +20,7 @@
                         :first_name="$guest->first_name"
                         :last_name="$guest->last_name"
                         :venues="$guest->venues"
+                        :weddings="$guest->venues->pluck('weddings')->flatten()"
                         :plus1="$guest->plus1"
                         :email="$guest->email"
                         :guest="$guest"

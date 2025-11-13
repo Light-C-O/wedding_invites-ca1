@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guest;
+use App\Models\Venue;
+use App\Models\Wedding;
+
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -12,20 +15,28 @@ class GuestController extends Controller
      */
     public function index()
     {
-        
+        $guests = Guest::with('venues.weddings')->get(); //fecth all guests related to the venue and weddings
+                
         //This is to view all the guests on the display site
-        $guests = Guest::with('venues')->get(); //fecth all guests related to the venue
         return view('guests.index', compact('guests')); //return the view with guests
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+
+        $venueId = $request->query('venue');    // or $request->input('venue')
+        $weddingId = $request->query('wedding');
+
+        // Optionally, you can fetch the models
+        $venue = Venue::find($venueId);
+        $wedding = Wedding::find($weddingId);
+        
         //This is the create function when making a new guest
         $guest = null; //empty model, no data
-        return view('guests.create', compact('guest'));
+        return view('guests.create', compact('guest', 'venue', 'wedding', 'venueId', 'weddingId'));
     }
 
     /**
@@ -39,6 +50,9 @@ class GuestController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:guests,email',
             'plus1' => 'nullable|string|max:255',
+            'venues' => 'nullable|array', // make sure 'venues' input is an array of IDs
+            'venue_id'   => 'nullable|exists:venues,id',
+            'wedding_id' => 'nullable|exists:weddings,id',
         ]);
 
 
@@ -53,16 +67,20 @@ class GuestController extends Controller
             'updated_at' => now()
         ]);
 
-
+        // attach the venue(s)
+        if($request->filled('venue_id')) {
+            $guest->venues()->attach($request->venue_id);
+        }
         
-        if($request->has('venues')){
-
-            $guest->books()->attach($request->venues);
+        if($request->has('venues')) {
+            $guest->venues()->attach($request->venues);
         }
 
 
+        
+
         //Return to index once created succesfully
-        return to_route('guests.index')->with('success', 'Guest has been created successfully! 🥳');
+        return to_route('guests.show', $validated['venue_id'])->with('success', 'Guest has been created successfully! 🥳');
     }
 
     /**
@@ -70,9 +88,8 @@ class GuestController extends Controller
      */
     public function show(Guest $guest)
     {
-        //Eager load venues and weddings for each venue
+        //Eager load venues and weddings for each guest
         $guest->load('venues.weddings');
-
         return (view('guests.show', compact('guest')));
         
     }
@@ -99,7 +116,7 @@ class GuestController extends Controller
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:guests,email',
+            'email' => 'required|email|unique:guests,email,' . $guest->id,
             'plus1' => 'nullable|string|max:255',
         ]);
 

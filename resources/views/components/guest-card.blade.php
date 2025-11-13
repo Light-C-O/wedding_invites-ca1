@@ -19,7 +19,14 @@
     </h4>
 
     <p class=" text-center font-light border-3 border-b-gray-200" style="font-family:Story Script">
-        Guest at: <br>{{ $venues->pluck('title')->join(', ') }}
+        Guest at: 
+        <p>    
+            @forelse($venues as $venue)
+                {{ $venue->title }}{{ !$loop->last ? ', ' : '' }}
+            @empty
+                None
+            @endforelse
+        </p>
     </p>
 
 </div>

@@ -69,9 +69,18 @@
 - **Wednesday - 12th Nov:**
     - I fixed the guest index and card. The problem was that $venues in the guest is a collection and trying to access a property called title on a collection is not possible since a guest can go to many venues. I can show al titles through a loop or join all vneue titles through string with a comma to separate.
     - Finished the guest show.blade and details.blade.
+    - In the guest-details, I made a foreach loop for bothe venues and weddings in order to show the weddings that guest is in as well as the venues.
     - Finished with the edit section.
     - Starting the create.
     - Changing routes in order for it to make sense.
+
+- **Thursday - 13th Nov:**
+    - Finished create.
+    - I made it that once a user click on sign me up as guest, it takes them to a guest form.
+    - I want a user to sign up as guest to a wedding through choosing a venue. However, when user clicks on the add guest button, it adds them - but, you can't see the venue or the wedding they choose in the guests.show through guest-details.blade.php And see venues chosen in the guests.index through guest-card.blade.php. I found one of many errors, I had attached guests to books instead of venues (_misplaced the wording_)
+    - I had to fix the GuestController in store function to add venues as an array to make the venues are passed.
+    - I added Then hidden fields inside guest-form concerning wedding and venues. I added it my store function the controller.
+    - I had some so many issues. And in order to fix most of them I needed to make another pivot table between weddings and guests. But is not what I want to do. i'm still to fid a way wround it.
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git
