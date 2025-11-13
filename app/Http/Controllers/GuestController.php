@@ -45,7 +45,7 @@ class GuestController extends Controller
     public function store(Request $request)
     {
         //Validate the request
-        $request->validate([
+        $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:guests,email',
@@ -56,16 +56,19 @@ class GuestController extends Controller
         ]);
 
 
-
         // Create a guest record in the database
-        Guest::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'plus1' => $request->plus1,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        // Guest::create([
+        //     'first_name' => $request->first_name,
+        //     'last_name' => $request->last_name,
+        //     'email' => $request->email,
+        //     'plus1' => $request->plus1,
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
+
+        
+        // Simlified creating a guest
+        $guest = Guest::create($validated);
 
         // attach the venue(s)
         if($request->filled('venue_id')) {
@@ -80,7 +83,7 @@ class GuestController extends Controller
         
 
         //Return to index once created succesfully
-        return to_route('guests.show', $validated['venue_id'])->with('success', 'Guest has been created successfully! 🥳');
+        return to_route('guests.show', $guest->id)->with('success', 'Guest has been created successfully! 🥳');
     }
 
     /**
@@ -147,7 +150,7 @@ class GuestController extends Controller
     public function destroy(Guest $guest)
     {
         //to delete a guest
-        $wedding->delete();
+        $guest->delete();
 
         // Redirect  in the index page with the success message
         return to_route('guests.index')->with('success', 'A guest has been deleted successfully! 🥳');

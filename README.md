@@ -80,7 +80,8 @@
     - I want a user to sign up as guest to a wedding through choosing a venue. However, when user clicks on the add guest button, it adds them - but, you can't see the venue or the wedding they choose in the guests.show through guest-details.blade.php And see venues chosen in the guests.index through guest-card.blade.php. I found one of many errors, I had attached guests to books instead of venues (_misplaced the wording_)
     - I had to fix the GuestController in store function to add venues as an array to make the venues are passed.
     - I added Then hidden fields inside guest-form concerning wedding and venues. I added it my store function the controller.
-    - I had some so many issues. And in order to fix most of them I needed to make another pivot table between weddings and guests. But is not what I want to do. i'm still to fid a way wround it.
+    - I had some so many issues. And in order to fix most of them I needed to make another pivot table between weddings and guests. But is not what I want to do. i'm still to find a way around it.
+    - Officially done with the CRUD functions of Guests.
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

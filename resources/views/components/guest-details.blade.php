@@ -8,7 +8,7 @@
         <!-- end gm -->
     </div>
 
-        @foreach($venues as $venue)
+        @foreach($guest->venues as $venue)
             <h1>Venue: {{ $venue->title }}</h1>
             @foreach($venue->weddings as $wedding)
                 <!-- Guest Info -->
