@@ -2,10 +2,14 @@
 
 <!-- Guest Detail -->
 <div  iv class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300  mx-auto"> <!-- Limit the overall container width to make the component more compact -->
-    <div class="">
+    <div class="text-black dark:text-gray-100">
         <!-- Guest name -->
-        <h1 class=" text-center text-5xl font-bold text-black dark:text-gray-100 mb-10">Guest: {{$first_name}} {{$last_name}}</h1> 
+        <h1 class=" text-center text-5xl font-bold">Guest: {{$first_name}} {{$last_name}}</h1> 
         <!-- end gm -->
+        <!-- Email -->
+            <p>Email: {{ $email }}</p>
+        <!-- end email -->
+
     </div>
 
         @foreach($guest->venues as $venue)
@@ -35,9 +39,6 @@
                                 <!-- Pulled the location from Venue table -->
                                 <p>Location: {{ $venue->location }}</p>
                             <!-- end location -->
-                            <!-- Email -->
-                                <p>Email: {{ $email }}</p>
-                            <!-- end email -->
                         </div>
 
                         <!-- Edit and delete button -->

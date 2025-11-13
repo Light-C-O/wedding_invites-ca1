@@ -1,4 +1,4 @@
-@props(['action', 'method', 'guest' => null, 'venueId' => null, 'weddingId' => null])
+@props(['action', 'method', 'guest' => null])
 <form 
     action="{{ $action }}" 
     method="POST"
@@ -7,9 +7,6 @@
     
     <!-- It's required in every Laravel form -->
     @csrf
-        <!-- to attach the venue and wedding - no needed to be seen as the user has already choosen the venue and which wedding of said venue -->
-        <input type="hidden" name="venue_id" value="{{ $venueId }}">
-        <input type="hidden" name="wedding_id" value="{{ $weddingId }}">
     <!-- HTML forms don’t support PUT/PATCH, so Laravel uses this trick. -->
     @if ($method === 'PUT' || $method === 'PATCH')
         @method($method)

@@ -82,6 +82,9 @@
     - I added Then hidden fields inside guest-form concerning wedding and venues. I added it my store function the controller.
     - I had some so many issues. And in order to fix most of them I needed to make another pivot table between weddings and guests. But is not what I want to do. i'm still to find a way around it.
     - Officially done with the CRUD functions of Guests.
+    - In order to make things simpilar, I decided to not make it complicated by creating a guest though venues and by adding wedding to. Instead a user can just create a guest without needed to save a wedding first. Instead the guest can go to venues and click on a wedding associated to that venue and it will automatically save it to their guest details and be viewed there.
+    - I'm thinking have to create a component called detail-card that way it will make things easier when it come to displaying the saved wedding.
+    - I also made the route dashboard route is easier to access by having it in every screen, think of it as a Home button.
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

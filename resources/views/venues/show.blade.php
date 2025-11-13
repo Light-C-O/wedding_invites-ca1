@@ -18,25 +18,29 @@ $wedding = Wedding::all();
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <!-- Back button to the dashboard -->
+            <div class="flex text-gray-900 font-semibold uppercase underline underline-offset-8 dark:text-gray-100 mb-5 " >
+                <a href="{{ route('dashboard') }}" class="inline-block px-2 py-1 hover:bg-stone-200 rounded dark:hover:bg-stone-500" :active="request()->routeIs('dashboard')">
+                {{ __('Back to Home') }}</a>
+            </div>
             <div class=" bg-[#adb2a5] dark:bg-[#6a6e63] overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 pb-2 text-grey-900 dark:text-gray-100">
                     <div class="flex justify-between font-semibold mb-4">
                     <h3 class="text-lg content-center">Venue Details:</h3>
                     <!-- Back to venues index button -->
-                    <a href="{{ route('venues.index') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 uppercase" :active="request()->routeIs('venues.create')">All Venues</a>
+                    <a href="{{ route('venues.index') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 uppercase">All Venues</a>
                 </div>
                     
-                        <!-- Display detailed information about the venue using the venue-details component -->
-                        <x-venue-details 
-                            :venue="$venue"
-                            :title="$venue->title"
-                            :image="$venue->image"
-                            :price="$venue->price"
-                            :location="$venue->location"
-                            :capacity="$venue->capacity"
-                            :description="$venue->description"
-                        />
-                </div>
+                <!-- Display detailed information about the venue using the venue-details component -->
+                <x-venue-details 
+                    :venue="$venue"
+                    :title="$venue->title"
+                    :image="$venue->image"
+                    :price="$venue->price"
+                    :location="$venue->location"
+                    :capacity="$venue->capacity"
+                    :description="$venue->description"
+                />
                 
                 @if (Auth::check() && Auth::user()->role !== 'user')
                     <!-- Edit and delete button -->
@@ -61,8 +65,8 @@ $wedding = Wedding::all();
                             <ul class="list-group flex">
                                 @foreach($venue->weddings as $wedding)
                                     <div class=" flex justify-between items-start m-3 mt-2 relative">
-                                        <!-- Create guest button -->
-                                        <a href="{{ route('guests.create', ['venue' => $venue->id, 'wedding' => $wedding->id]) }}" class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black uppercase font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Sign me up!</a>
+                                        <!-- save button -->
+                                        <a href="{{ route('guests.show', ['guest' => $guest->id]) }}" class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black font-bold py-2 px-2 border-b-2 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Save a Date!</a>
                                         
                                         <!-- making a card to show the information -->
                                         <x-wedding-card
