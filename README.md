@@ -93,6 +93,8 @@
     - In venues/show.blade I changed the button route from ['guest' => auth()->user()->id] to ['guest' => Auth::user()->guest->id] it will assumes that each user has a related guest record. I created a safetynet in the form of a if statement says that if Auth::user()->guest is null then throw an error that tells the user they need to create a guest in order to save a date to a wedding of this venue.
     - I made sure in the store in GuestController the appropiate things. I made the mistake of forget to add user_id as on the things to create a guest. I also made sure to user_id in the fillable section in Guest.php.
     - Finally, now a user can log in, create a guest list, go to the venues, choose a venue they like and pick a wedding they want to save a date to and it redirects them to th guest form with the saved date of the wedding as well as the venue.
+    - Although, I can click on a date and it dsplays the nfo on guests.show, it is temporary and the user and only display one wedding. For it to stay there, I have either make a new table or do some JSON with all the weddings. I rather not make it too complicated.
+    - Refining the overall apearance and the routes for better navigation.
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

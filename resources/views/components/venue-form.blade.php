@@ -148,6 +148,6 @@ enctype="multipart/form-data" is required when uploading files (like images).  -
 
         <!-- Cancel button - an if statement is made to see if the venue exits(edit section) or not (create section) and redirect to the right place-->
         <a href="{{ $venue && $venue->exists ? route('venues.show', $venue->id) : route('venues.index') }}"
-        class="text-base inline-flex items-center bg-[#aebb98] hover:bg-[#aeb8be] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#959c88] hover:border-[#7e8f9b] rounded transition ease-in-out duration-150">Go Back</a>
+        class="text-base inline-flex items-center bg-[#aebb98] hover:bg-[#aeb8be] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#959c88] hover:border-[#7e8f9b] rounded transition ease-in-out duration-150">Cancel</a>
     </div>
 </form>
