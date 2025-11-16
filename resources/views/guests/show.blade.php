@@ -38,12 +38,11 @@ $wedding = Wedding::all();
                 <x-guest-details
                     :first_name="$guest->first_name"
                     :last_name="$guest->last_name"
-                    :venues="$guest->venues"
-                    :weddings="$guest->venues->pluck('weddings')->flatten()"
                     :plus1="$guest->plus1"
                     :email="$guest->email"
-                    :guest="$guest"
+
                 />
+
                 <!-- Edit and delete button of guest-->
                 <div class="flex space-x-2 place-content-center">
                     <!-- Edit button to got to the guests.edit -->
@@ -57,6 +56,24 @@ $wedding = Wedding::all();
                         <button type="submit" class="bg-[#987e82] hover:bg-[#9f9798] text-black uppercase font-bold py-2 px-4 border-b-4 border-[#6a585b] hover:border-[#585e5f] rounded transition ease-in-out duration-150">Delete the guest</button>
                     </form>
                 </div>
+
+
+                @if($selectedWedding && $selectedVenue)
+                    <div class="mb-4 p-4 bg-green-100 text-green-800 rounded">
+                        🎉 You saved a date for 
+                        <strong>{{ $selectedWedding->bride_name }} & {{ $selectedWedding->groom_name }}</strong> 
+                        at <strong>{{ $selectedVenue->title }}</strong> 
+                        on <strong>{{ $selectedWedding->wedding_date_time->format('F j, Y, g:i A') }}</strong>!
+                    </div>
+                @endif
+                <!-- <x-guest-invite
+                    :venues="$guest->venues"
+                    :weddings="$guest->venues->pluck('weddings')->flatten()"
+                    :guest="$guest"
+                    :plus1="$guest->plus1"
+                    :first_name="$guest->first_name"
+                    :last_name="$guest->last_name"
+                /> -->
             </div>
         </div>
     </div>

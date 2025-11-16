@@ -56,15 +56,16 @@ class GuestController extends Controller
         ]);
 
 
-        // Create a guest record in the database
-        // Guest::create([
-        //     'first_name' => $request->first_name,
-        //     'last_name' => $request->last_name,
-        //     'email' => $request->email,
-        //     'plus1' => $request->plus1,
-        //     'created_at' => now(),
-        //     'updated_at' => now()
-        // ]);
+        // Create a guest record in the database that is linked to currently logged-in user
+        Guest::create([
+            'user_id' => auth()->id(),
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'plus1' => $request->plus1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
 
         
         // Simlified creating a guest
@@ -93,8 +94,22 @@ class GuestController extends Controller
     {
         //Eager load venues and weddings for each guest
         $guest->load('venues.weddings');
-        return (view('guests.show', compact('guest')));
+
+        $selectedVenue = request()->query('venue');
+        $selectedWedding = request()->query('wedding');
+
+        $selectedVenueModel = $selectedVenue ? Venue::find($selectedVenue) : null;
+        $selectedWeddingModel = $selectedWedding ? Wedding::find($selectedWedding) : null;
+
+        //ensures that if a user clicks the button, the user gets the actual Venue and Wedding models to display in the view.
+        return view('guests.show', [
+            'guest' => $guest,
+            'selectedVenue' => $selectedVenueModel,
+            'selectedWedding' => $selectedWeddingModel,
+        ]);
         
+
+
     }
 
     /**

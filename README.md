@@ -86,5 +86,13 @@
     - I'm thinking have to create a component called detail-card that way it will make things easier when it come to displaying the saved wedding.
     - I also made the route dashboard route is easier to access by having it in every screen, think of it as a Home button.
 
+- **Sunday - 16th Nov:**
+    - I make a new compoment called GuestInvite instead of the GuestDetailCard. Although, I ended up not using it once I found the problem.
+    - I want it when a person logs in as a user, they the ability to go to venues and pick a wedding booked in that venue and save a date. Once they click on save a date button it will redirect back to their own guest.show with that specific venue and wedding. I managed to do that how ever due to the user not being a guest Laravel could display the the venue and wedding picked.In order for it to do that the user must be guest. So, there needs to be relationship between User table and Guest table : a one-to-one relationship.
+    - I first created a mirgation to add a user_id to guest and ran it. I updated the User model and guest Model to create a one-to-one relationship. I then went to AppServiceProvider.php add a user registered listener that bascially creates a Guest record of each user that register, it also check if a user already has a guest profile to hinder any duplications. I put it in the booth method I cdon't need to make or create a provider called EventServiceProvider.
+    - In venues/show.blade I changed the button route from ['guest' => auth()->user()->id] to ['guest' => Auth::user()->guest->id] it will assumes that each user has a related guest record. I created a safetynet in the form of a if statement says that if Auth::user()->guest is null then throw an error that tells the user they need to create a guest in order to save a date to a wedding of this venue.
+    - I made sure in the store in GuestController the appropiate things. I made the mistake of forget to add user_id as on the things to create a guest. I also made sure to user_id in the fillable section in Guest.php.
+    - Finally, now a user can log in, create a guest list, go to the venues, choose a venue they like and pick a wedding they want to save a date to and it redirects them to th guest form with the saved date of the wedding as well as the venue.
+
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

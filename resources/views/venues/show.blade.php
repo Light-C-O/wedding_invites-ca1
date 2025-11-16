@@ -66,15 +66,29 @@ $wedding = Wedding::all();
                                 @foreach($venue->weddings as $wedding)
                                     <div class=" flex justify-between items-start m-3 mt-2 relative">
                                         <!-- save button -->
-                                        <a href="{{ route('guests.show', ['guest' => $guest->id]) }}" class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black font-bold py-2 px-2 border-b-2 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Save a Date!</a>
-                                        
-                                        <!-- making a card to show the information -->
-                                        <x-wedding-card
-                                            :bride_name="$wedding->bride_name"
-                                            :groom_name="$wedding->groom_name"
-                                            :wedding_date_time="$wedding->wedding_date_time"
-                                            :venue="$venue"
-                                        />
+                                        @auth
+                                            @if(Auth::user()->guest)
+                                                <a href="{{ route('guests.show', [
+                                                    'guest' => Auth::user()->guest->id,
+                                                    'venue' => $venue->id,
+                                                    'wedding' => $wedding->id
+                                                ]) }}"
+                                                    class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black font-bold py-2 px-2 border-b-2 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">
+                                                    Save a Date!
+                                                </a>
+
+                                                <!-- making a card to show the information -->
+                                                <x-wedding-card
+                                                    :bride_name="$wedding->bride_name"
+                                                    :groom_name="$wedding->groom_name"
+                                                    :wedding_date_time="$wedding->wedding_date_time"
+                                                    :venue="$venue"
+                                                />
+
+                                            @else
+                                                <span class="text-red-500">No guest profile found. Please create your guest first.</span>
+                                            @endif
+                                        @endauth
                                     </div>
                                 @endforeach
                             </ul>

@@ -24,6 +24,11 @@ class User extends Authenticatable
         'role',
     ];
 
+    public function guest()
+    {
+        //a user has only one guest
+        return $this->hasOne(Guest::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
