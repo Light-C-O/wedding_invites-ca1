@@ -98,8 +98,12 @@ class GuestController extends Controller
         $selectedVenue = request()->query('venue');
         $selectedWedding = request()->query('wedding');
 
+        // attach the wedding
+
         $selectedVenueModel = $selectedVenue ? Venue::find($selectedVenue) : null;
         $selectedWeddingModel = $selectedWedding ? Wedding::find($selectedWedding) : null;
+
+
 
         //ensures that if a user clicks the button, the user gets the actual Venue and Wedding models to display in the view.
         return view('guests.show', [

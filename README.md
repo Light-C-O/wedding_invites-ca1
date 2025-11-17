@@ -96,5 +96,10 @@
     - Although, I can click on a date and it dsplays the nfo on guests.show, it is temporary and the user and only display one wedding. For it to stay there, I have either make a new table or do some JSON with all the weddings. I rather not make it too complicated.
     - Refining the overall apearance and the routes for better navigation.
 
+### Week 3
+- **Monday - 17th Nov:**
+    - I made the user_id a default.
+    - The user_id has become an automatic guest once the login.
+
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

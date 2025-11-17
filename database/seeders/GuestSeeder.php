@@ -17,6 +17,7 @@ class GuestSeeder extends Seeder
         //
         Guest::insert([
             [
+                'user_id' => 1,
                 'first_name' => 'John',
                 'last_name' => 'Doe',
                 'email' => 'john.doe@example.com',
@@ -25,6 +26,7 @@ class GuestSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'user_id' => 2,
                 'first_name' => 'Emily',
                 'last_name' => 'Smith',
                 'email' => 'emily.smith@example.com',
@@ -33,6 +35,7 @@ class GuestSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'user_id' => 3,
                 'first_name' => 'Michael',
                 'last_name' => 'Johnson',
                 'email' => 'michael.johnson@example.com',
@@ -41,6 +44,7 @@ class GuestSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'user_id' => 4,
                 'first_name' => 'Olivia',
                 'last_name' => 'Brown',
                 'email' => 'olivia.brown@example.com',
@@ -49,6 +53,7 @@ class GuestSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'user_id' => 5,
                 'first_name' => 'William',
                 'last_name' => 'Davis',
                 'email' => 'william.davis@example.com',
@@ -57,6 +62,7 @@ class GuestSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'user_id' => 6,
                 'first_name' => 'Sophia',
                 'last_name' => 'Martinez',
                 'email' => 'sophia.martinez@example.com',
