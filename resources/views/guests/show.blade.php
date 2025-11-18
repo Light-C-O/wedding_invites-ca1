@@ -61,15 +61,16 @@ $wedding = Wedding::all();
                     <div class="p-4 m-5 text-gray-700 dark:text-gray-800 bg-white border rounded-lg border-[#adb2a5] border-5 dark:bg-[#adb2a5]">You saved a date for <strong>{{ $selectedWedding->bride_name }} & {{ $selectedWedding->groom_name }}</strong> at <strong>{{ $selectedVenue->title }}</strong> on <strong>{{ $selectedWedding->wedding_date_time->format('F j, Y, g:i A') }}</strong>! 🎉
                     </div>
                 @endif
-                
                 <x-guest-invite
-                    :venues="$guest->venues"
-                    :weddings="$guest->venues->pluck('weddings')->flatten()"
+                    :venues="$venues"
+                    :weddings="$weddings"
+                    
                     :guest="$guest"
                     :plus1="$guest->plus1"
                     :first_name="$guest->first_name"
                     :last_name="$guest->last_name"
                 />
+                <!-- :weddings="$guest->venues->pluck('weddings')->flatten()" -->
             </div>
         </div>
     </div>

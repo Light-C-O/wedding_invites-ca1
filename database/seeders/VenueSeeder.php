@@ -82,13 +82,15 @@ class VenueSeeder extends Seeder
             ];
     
             // Now loop through the venues
+            //creates venue records from an array, setting consistent timestamps for each entry before saving to the database
             foreach ($venues as $venueData) {
                 $venue = Venue::create(array_merge($venueData, [
                     'created_at' => $currentTimestamp,
                     'updated_at' => $currentTimestamp,
                 ]));
 
-                // Attach two random guests (if they exist)
+                
+                //randomly selects two guest IDs from the guest table and links them to a venue through a many-to-many relationship, if guests exist.
                 $guests = Guest::inRandomOrder()->take(2)->pluck('id');
                 $venue->guests()->attach($guests);
             }

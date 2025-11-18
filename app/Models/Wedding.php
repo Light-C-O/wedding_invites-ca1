@@ -32,4 +32,11 @@ class Wedding extends Model
         // Each wedding belongs to one venue
         return $this->belongsTo(Venue::class);
     }
+
+// Define relationship with Guest model
+    public function guests()
+    {
+        //One wedding can have many guets
+        return $this->belongsToMany(Guest::class, 'guest_wedding');
+    }
 }

@@ -69,14 +69,13 @@ $wedding = Wedding::all();
                                         <!-- save button -->
                                         @auth
                                             @if(Auth::user()->guest)
-                                                <a href="{{ route('guests.show', [
-                                                    'guest' => Auth::user()->guest->id,
-                                                    'venue' => $venue->id,
-                                                    'wedding' => $wedding->id
-                                                ]) }}"
-                                                    class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black font-bold py-2 px-2 border-b-2 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">
-                                                    Save a Date!
-                                                </a>
+                                                <form action="{{route('guests.attachWedding', Auth::user()->guest)}}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="wedding_id" value="{{$wedding->id}}">
+                        
+                                                    <button type="submit" class="absolute top right-0 bg-blue-500 hover:bg-blue-400 text-black font-bold py-2 px-2 border-b-2 border-blue-700 hover:border-blue-600 rounded transition ease-in-out duration-150">Save</button>
+                                                </form>
+
 
                                                 <!-- making a card to show the information -->
                                                 <x-wedding-card

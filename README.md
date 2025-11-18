@@ -100,6 +100,10 @@
 - **Monday - 17th Nov:**
     - I made the user_id a default.
     - The user_id has become an automatic guest once the login.
+  
+- **Tuesday - 18th Nov:**
+    - Added a pivot table.
+    - Atted a new route with a submit 
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

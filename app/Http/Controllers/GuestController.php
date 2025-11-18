@@ -93,12 +93,19 @@ class GuestController extends Controller
     public function show(Guest $guest)
     {
         //Eager load venues and weddings for each guest
-        $guest->load('venues.weddings');
+        // $guest->load('venues.weddings');
+        // $venues = $guest->venues()->get();
+
+        // attach weddings to venue of guest
+            $venues = $guest->venues()->with('weddings')->get();
+
 
         $selectedVenue = request()->query('venue');
         $selectedWedding = request()->query('wedding');
 
         // attach the wedding
+        // Fetches all weddings linked to a specific venue.
+        $weddings = $guest->weddings()->get();
 
         $selectedVenueModel = $selectedVenue ? Venue::find($selectedVenue) : null;
         $selectedWeddingModel = $selectedWedding ? Wedding::find($selectedWedding) : null;
@@ -108,6 +115,8 @@ class GuestController extends Controller
         //ensures that if a user clicks the button, the user gets the actual Venue and Wedding models to display in the view.
         return view('guests.show', [
             'guest' => $guest,
+            'weddings' => $weddings,
+            'venues' => $venues,
             'selectedVenue' => $selectedVenueModel,
             'selectedWedding' => $selectedWeddingModel,
         ]);
@@ -173,5 +182,9 @@ class GuestController extends Controller
 
         // Redirect  in the index page with the success message
         return to_route('guests.index')->with('success', 'A guest has been deleted successfully! 🥳');
+    }
+
+    public function attachWedding(Request $request, Guest $guest){
+        dd('hello');
     }
 }

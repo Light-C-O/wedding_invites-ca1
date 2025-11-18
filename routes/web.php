@@ -22,6 +22,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Guest Routes
+    // CRUD operations for Guest resource - in similar fashion to Venue routes but using Route::resource for brevity
+    Route::post('/guests/{guest}/weddings/attach', [GuestController::class, 'attachWedding'])->name('guests.attachWedding');
+    Route::resource('guests', GuestController::class)->middleware('auth');
+    
+//
+
 // Venue Routes
     // CRUD operations for Venue resource
         // Index - List all venues: when someone goes to /venues in their browser (like yourapp.com/venues), this will call the index() method in the VenueController
@@ -50,10 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('weddings', WeddingController::class);
 //
 
-// Guest Routes
-    // CRUD operations for Guest resource - in similar fashion to Venue routes but using Route::resource for brevity
-    Route::resource('guests', GuestController::class)->middleware('auth');
-//
+
 
 
 

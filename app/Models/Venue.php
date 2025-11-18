@@ -29,7 +29,7 @@ class Venue extends Model
         return $this->hasMany(Wedding::class);
     }
 
-// Define relationship with Guest model
+    // Define relationship with Guest model
     public function guests()
     {
         //One venue can host many guets

@@ -21,15 +21,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        // php artisan db:seed --class:Name
+        // php artisan db:seed --class=Name
         //Calls class seeders to the tables
         //Commented out to prevent duplicate seeding
 
             $this->call([
                 AdminSeeder::class,
-                GuestSeeder::class, //The order of the seeder matters
                 VenueSeeder::class,
                 WeddingSeeder::class,
+                GuestSeeder::class, //The order of the seeder matters
             ]);
     }
 }

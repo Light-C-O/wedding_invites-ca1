@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Guest;
+use App\Models\Wedding;
+use App\Models\Venue;
 use Carbon\Carbon;
 
 class GuestSeeder extends Seeder
@@ -14,8 +16,9 @@ class GuestSeeder extends Seeder
      */
     public function run(): void
     {
+        $currentTimestamp = Carbon:: now();
         //
-        Guest::insert([
+        $guests = [
             [
                 'user_id' => 1,
                 'first_name' => 'John',
@@ -70,6 +73,22 @@ class GuestSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-        ]);
+        ];
+
+
+        foreach ($guests as $guestData) {
+            $guest = Guest::create(array_merge($guestData, [
+                'created_at' => $currentTimestamp,
+                'updated_at' => $currentTimestamp,
+            ]));
+
+            
+            //randomly selects two guest IDs from the guest table and links them to a venue through a many-to-many relationship, if guests exist.
+            $weddings = Wedding::inRandomOrder()->take(2)->pluck('id');
+            $guest->weddings()->attach($weddings);
+
+             $venueIds = Venue::inRandomOrder()->take(2)->pluck('id')->toArray();
+                $guest->venues()->syncWithoutDetaching($venueIds);
+        }
     }
 }
