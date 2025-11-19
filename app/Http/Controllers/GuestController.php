@@ -92,36 +92,45 @@ class GuestController extends Controller
      */
     public function show(Guest $guest)
     {
-        //Eager load venues and weddings for each guest
-        // $guest->load('venues.weddings');
-        // $venues = $guest->venues()->get();
 
-        // attach weddings to venue of guest
-            $venues = $guest->venues()->with('weddings')->get();
+        // load guest's venues and their weddings for the invite component
+        $venues = $guest->venues()->with('weddings')->get();
+        // combine weddings from those venues for the component
+        $weddings = $venues->pluck('weddings')->flatten()->unique('id')->values();
 
+        //default
+        $selectedWedding = null;
+        $selectedVenue = null;
 
-        $selectedVenue = request()->query('venue');
-        $selectedWedding = request()->query('wedding');
+        //checks whether the guest has a wedding_id; if true, 
+        if ($guest->wedding_id) {
+            //it retrieves that wedding along with its associated venue, and then stores the venue in $selectedVenue
+            $selectedWedding = Wedding::with('venue')->find($guest->wedding_id);
+            $selectedVenue = $selectedWedding?->venue;
+        }
 
-        // attach the wedding
-        // Fetches all weddings linked to a specific venue.
-        $weddings = $guest->weddings()->get();
+        //if there is no $selectedWedding yet and the session contains a selectedWeddingId
+        if (!$selectedWedding && session()->has('selectedWeddingId')) {
+            //then retrieve that wedding with its venue and assign the venue to $selectedVenue.
+            $selectedWedding = Wedding::with('venue')->find(session('selectedWeddingId'));
+            $selectedVenue = $selectedWedding?->venue;
+        }
 
-        $selectedVenueModel = $selectedVenue ? Venue::find($selectedVenue) : null;
-        $selectedWeddingModel = $selectedWedding ? Wedding::find($selectedWedding) : null;
+        //If no wedding is currently selected and a wedding ID is present in the URL query
+        if (!$selectedWedding && $id = request()->query('wedding')) {
+            //load that wedding and its venue.
+            $selectedWedding = Wedding::with('venue')->find($id);
+            $selectedVenue = $selectedWedding?->venue;
+        }
 
-
+        //checks if no venue is currently selected and the guest has a venue assigned
+        if (!$selectedVenue && $guest->venue_id) {
+            //load that venue
+            $selectedVenue = Venue::find($guest->venue_id);
+        }
 
         //ensures that if a user clicks the button, the user gets the actual Venue and Wedding models to display in the view.
-        return view('guests.show', [
-            'guest' => $guest,
-            'weddings' => $weddings,
-            'venues' => $venues,
-            'selectedVenue' => $selectedVenueModel,
-            'selectedWedding' => $selectedWeddingModel,
-        ]);
-        
-
+        return view('guests.show', compact('guest', 'venues', 'weddings', 'selectedWedding', 'selectedVenue'));
 
     }
 
@@ -185,6 +194,27 @@ class GuestController extends Controller
     }
 
     public function attachWedding(Request $request, Guest $guest){
-        dd('hello');
+        
+        //validate the wedding_id
+        $request->validate([
+            'wedding_id' => 'required|exists:weddings,id',
+        ]);
+
+        //retrieves the wedding record matching the given wedding_id, and if it doesn’t exist, it automatically throws an error.
+        $wedding = Wedding::findOrfail($request->wedding_id);
+
+        //associates the guest with the given wedding ID while keeping all existing guest-wedding relationships intact.
+        $guest->weddings()->syncWithoutDetaching([$wedding->id]);
+
+        //stores the venue ID linked to the wedding into the variable $venueId
+        $venueId = $wedding->venue_id;
+
+        //if successful, it redirects to guest show of the spefic and with the selected items for the view
+        return redirect()->route('guests.show', $guest)
+                        ->with('selectedWeddingId', $wedding->id)
+                        ->with('selectedVenueId', $wedding->venue_id)
+                        ->with('success', 'Wedding attached to guest');
+
+
     }
 }

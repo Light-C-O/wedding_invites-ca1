@@ -102,8 +102,29 @@
     - The user_id has become an automatic guest once the login.
   
 - **Tuesday - 18th Nov:**
-    - Added a pivot table.
-    - Atted a new route with a submit 
+    - Crated another branch called pivot_table.
+    - Added a pivot table between guests and wedding - a many-to-many relationship. This is to have the ability to attach a wedding to a guest just like venue to guest.
+    - Decided to change the route of the save a date button from a href into a new route in web.php with a submit form with a POST method.
+    - The route expects a Guest parameter: /guests/{guest}/weddings/attach.
+    - the form incorrectly passes a Wedding object to that route. 
+    - Because {guest} cannot be resolved, the route cannot not match, so the controller method is never reached.
+    - By passing the authenticated user’s guest ID to the route, it fixes the issue.
+    - Don’t forget to include @csrf in the form, this tells Laravel that this form and method is allowed so it doesn't block it. In short, it confirms the request came from my website, and it is not a malicious site
+    - After fixing the route, the controller finally successfully receive the request and it works perfectly fine and it was proven using the dump data function - (_dd()_).
+    - Hopefully it will create new row in the database on the guest_wedding pivot table.
+
+- **Wednesday - 19th Nov:**
+    - Merged the pivot_table to wedding_invites-ca2
+    - In the attachWedding function in GuestController, I implemtented the action that it fetches weddings, validates input, attaches the selected wedding to the guest (without removing existing ones). Then, it redirects back to the guest show page with the selected wedding and venue for the view to display.
+    - When a user(_that is guest_) clicks on the wedding, it goes to the guest show but it didn't display the wedding choosen. I chacked my GuestController and, it seems like I didn't make any changes to it. I had to use session because attachWedding does a redirect. Redirects start a new request so request data is lost
+    - I first decided to use an alternative. Return the view directly (no redirect), append IDs to the redirect URL (query params/route params), or flash only the IDs and re-fetch models in show.
+    - I later changed it that in the show function in GuestController, it loads all venues associated with that guest along with their weddings, then combines those weddings into a unique collection. 
+    - It then initializes the selected wedding and venue as null by default, then tries to determine the correct selections in order: first using the guest’s wedding_id, then checking for a selectedWeddingId in the session, and finally looking for a wedding ID in the URL query. 
+    - If no venue is selected yet, it falls back to the guest’s venue_id. Finally, it returns the guests.show view with the guest, their venues, weddings, and the selected wedding and venue for display.
+    - Also amended the attachedWedding. It first validates that a wedding_id is provided and exists, then retrieves the corresponding wedding, and links it to the guest without removing any existing associations. It also stores the wedding’s venue ID and then redirects to the guest’s show page, passing along the selected wedding and venue IDs and a success message for display.
+    - This is shown in the database as well, however I want it to be stored in a way. Not sure I can make it work without making a migration in the guest table to add wedding_id and venue_id. I may try adding a selected column, like booloean in the pivot table between guest and wedding.
+
+
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git
