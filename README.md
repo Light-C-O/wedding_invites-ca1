@@ -124,6 +124,11 @@
     - Also amended the attachedWedding. It first validates that a wedding_id is provided and exists, then retrieves the corresponding wedding, and links it to the guest without removing any existing associations. It also stores the wedding’s venue ID and then redirects to the guest’s show page, passing along the selected wedding and venue IDs and a success message for display.
     - This is shown in the database as well, however I want it to be stored in a way. Not sure I can make it work without making a migration in the guest table to add wedding_id and venue_id. I may try adding a selected column, like booloean in the pivot table between guest and wedding.
 
+- **Thursday - 20th Nov:**
+    - I decided add another coloumn called selected. I used the pivot table guest_wedding - mark the selected wedding on the existing guest_wedding pivot (adding a boolean) and update the pivot when attaching so the choice persists. The selected wedding's venue comes from the Wedding->venue relation.
+    - It displays the selected wedding, and it stays there when I get back to it, it also states it had been selected in the database (_1 in the selected column since its a boolean_). However if user picks another wedding, it automtically unselects the previous one and replaces it with the new one. I don't want it to do that, although I am satisfied that I can see it as a record in the database. But I want the user to also see the other wedding they have selected, so I want the previous ones to *remain* selected.
+
+
 
 
 ## GitHub Link

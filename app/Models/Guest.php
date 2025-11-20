@@ -32,6 +32,8 @@ class Guest extends Model
         public function weddings()
     {
         // Each guest can belong to many weddings
-        return $this->belongsToMany(Wedding::class, 'guest_wedding');
+        return $this->belongsToMany(Wedding::class, 'guest_wedding')
+                ->withPivot('selected')
+                ->withTimestamps();
     }
 }
