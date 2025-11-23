@@ -1,4 +1,4 @@
-@props(['first_name', 'last_name', 'plus1', 'email', 'venues'])
+@props(['first_name', 'last_name', 'plus1', 'email', 'venues', 'guest'])
 
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,11 +21,21 @@
     <p class=" text-center font-light border-3 border-b-gray-200" style="font-family:Story Script">
         Guest at: 
         <p>    
-            @forelse($venues as $venue)
-                {{ $venue->title }}{{ !$loop->last ? ', ' : '' }}
-            @empty
-                None
-            @endforelse
+            @php
+                // find the selected wedding via pivot and get its venue (null-safe)
+                $selectedWedding = $guest->weddings->firstWhere('pivot.selected', true);
+                $selectedVenue = $selectedWedding?->venue;
+            @endphp
+
+            @if($selectedVenue)
+                {{ $selectedVenue->title }}
+            @else
+                @forelse($guest->venues as $venue)
+                    {{ $venue->title }}{{ !$loop->last ? ', ' : '' }}
+                @empty
+                    None
+                @endforelse
+            @endif
         </p>
     </p>
 

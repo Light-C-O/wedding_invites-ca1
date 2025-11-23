@@ -26,7 +26,7 @@
                     <h3 class="font-semibold text-lg mb-5">Create Guest:</h3>
                     <!-- create guest -->
                         <x-guest-form
-                            :action="route('guests.store', $guest)"
+                            :action="route('guests.store')"
                             :method="'POST'"
                         />
                 </div>

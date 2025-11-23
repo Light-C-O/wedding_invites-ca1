@@ -37,6 +37,7 @@
                                         :last_name="$guest->last_name"
                                         :venues="$guest->venues"
                                         :plus1="$guest->plus1"
+                                        :guest="$guest"
                                     />
                                 </a>
                         @endforeach

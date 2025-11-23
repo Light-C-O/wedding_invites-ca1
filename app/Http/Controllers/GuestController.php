@@ -17,6 +17,9 @@ class GuestController extends Controller
     public function index()
     {
         $guests = Guest::with('venues.weddings')->get(); //fecth all guests related to the venue and weddings
+
+        //it loads all guests along with their venues, weddings, and related venue data in one go.
+        $guests = Guest::with(['venues.weddings', 'weddings.venue'])->get();
                 
         //This is to view all the guests on the display site
         return view('guests.index', compact('guests')); //return the view with guests
@@ -57,19 +60,21 @@ class GuestController extends Controller
         ]);
 
 
-        // Create a guest record in the database that is linked to currently logged-in user
-        Guest::create([
-            'user_id' => auth()->id(),
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'plus1' => $request->plus1,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        // Create a guest record in the database that is linked to currently logged-in user. No longer needed. It's creating the guest twice - one with the user and one without
+        // Guest::create([
+        //     'user_id' => auth()->id(),
+        //     'first_name' => $request->first_name,
+        //     'last_name' => $request->last_name,
+        //     'email' => $request->email,
+        //     'plus1' => $request->plus1,
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
 
+        //Added the logged-in user id into validated data
+        $validated['user_id'] = auth()->id();
         
-        // Simlified creating a guest
+        // Simlified logic for creating a guest
         $guest = Guest::create($validated);
 
         // attach the venue(s)
@@ -215,8 +220,10 @@ class GuestController extends Controller
 
         $wedding = Wedding::with('venue')->findOrFail($weddingId);
 
-        //retrieves the wedding record matching the given wedding_id, and if it doesn’t exist, it automatically throws an error.
-        // $wedding = Wedding::findOrfail($request->wedding_id);
+        //commented-out - not in use
+            //retrieves the wedding record matching the given wedding_id, and if it doesn’t exist, it automatically throws an error.
+            // $wedding = Wedding::findOrfail($request->wedding_id);
+        //
 
         // associates the guest with the given wedding ID while keeping all existing guest-wedding relationships intact. Attach it to the pivot table and mark it selected
         $guest->weddings()->syncWithoutDetaching([$weddingId => ['selected' => true]]);
