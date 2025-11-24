@@ -128,13 +128,17 @@
     - I decided add another coloumn called selected. I used the pivot table guest_wedding - mark the selected wedding on the existing guest_wedding pivot (adding a boolean) and update the pivot when attaching so the choice persists. The selected wedding's venue comes from the Wedding->venue relation.
     - It displays the selected wedding, and it stays there when I get back to it, it also states it had been selected in the database (_1 in the selected column since its a boolean_). However if user picks another wedding, it automtically unselects the previous one and replaces it with the new one. I don't want it to do that, although I am satisfied that I can see it as a record in the database. But I want the user to also see the other wedding they have selected, so I want the previous ones to *remain* selected.
 
-- **Sunday - 23th Nov:**
+- **Sunday - 23rd Nov:**
     - I tested a few things and noticed that I could create a guest. I troubleshoot an it turns out that I didn't add the user_id in the create in store function in GuestController. I also came accross a error, I was making the gust twice - one with the user_id and one without. I fixed te problem by commenting out one of the create  guest and added the logged-user id into the one I want to user to validate.
     - I removed created_at and updated_at in the fillable in the Guest model as Laravel already does it automatically.
     - I had another issue that needed fixing. I had passed $guest in route('guests.store') in the create.blade.php, it caused it to not go to the directed route show that the guest had been created.
     - I was able to display venue on the wedding selected of tht guest by modifying the index in the controller to fetch every guest while also loading their related venues and those venues’ weddings, along with the guest’s own weddings and each wedding’s venue, in advance to avoid extra database queries.
     - Back to the issue (_"I want the user to also see the other weddings they have selected, so I want the previous ones to **remain** selected"_). In order to do that, I need to migrate - to add venue_id on the pivot table guest_wedding as well as possibly another selected column, make it true when attaching. I have to update the pivot table schema, the guest relation and show/display multiple weddings. This is quite challenging, as it's above my capability. I understand the logic and what it should do, but how to exceute and implement it, is where I'm stuck.
     - I believe I have added what I want for my project. Preparing the script to record.
+
+### Week 4
+- **Monday - 24th Nov:**
+    - Completed the recording.
 
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git
