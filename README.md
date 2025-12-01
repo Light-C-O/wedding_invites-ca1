@@ -141,7 +141,7 @@
     - Completed the recording.
 
 ### Week 5
--**Monday - 12th Dec:**
+- **Monday - 12th Dec:**
     - Made a last-minute changes (_not in the recording_).
     - Corrected few colours.
     - Corrected structures: I attempted the vertical stretching with flex-col and place-self-stretch, but nothing changed. I later find the issue, it was the a tag that was block the effect, the place-self-strtech is supposed to be applied to the a tag not the on the card in the wedding-card compoment. Fixed the stretching with h-full on the a tag as well in the wedding-card. Wanted to add justify-center to center vertiacl in the wedding-card but decided against it.
