@@ -24,7 +24,7 @@
                         <h3 class="text-lg content-center">List of Venues:</h3>
                         @if (auth()->user()->role === 'admin')
                             <div class="uppercase" >
-                                <a href="{{ route('venues.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('venues.create')">
+                                <a href="{{ route('venues.create') }}" class="inline-block  border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('venues.create')">
                                 {{ __('Create Venues') }}</a>
                             </div>
                         @endif
@@ -42,7 +42,7 @@
                     </div>
                     @if (auth()->user()->role === 'admin')
                         <div class="flex justify-end text-gray-900 font-semibold uppercase dark:text-gray-100" >
-                            <a href="{{ route('venues.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('venues.create')">
+                            <a href="{{ route('venues.create') }}" class="inline-block border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('venues.create')">
                             {{ __('Create Venues') }}</a>
                         </div>
                     @endif

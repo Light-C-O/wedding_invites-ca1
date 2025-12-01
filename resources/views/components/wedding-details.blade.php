@@ -1,4 +1,4 @@
-@props(['bride_name', 'groom_name', 'venue_id', 'maid_of_honor', 'best_man', 'wedding_date_time'])
+@props(['bride_name', 'groom_name', 'venue_id', 'maid_of_honor', 'best_man', 'wedding_date_time', 'wedding'])
 
 @php
     use App\Models\Venue;
@@ -49,7 +49,8 @@
 
                 <!-- Wedding Capacity -->
                     <!-- No. of current guests-->
-                        <h2 class="text-gray-500 dark:text-gray-100 text-base font-bold italic">Total guests for all weddings: {{ $venue->weddings->sum('guest_count') }} of {{ $venue->capacity}}
+                        <h2 class="text-gray-500 dark:text-gray-100 text-base font-bold italic">Total guests for this wedding: {{ $wedding->guests->count() }} out of {{ $wedding->venue->capacity }}
+                        </h2>
                 <!-- end capacity -->
             </div>
         </div>

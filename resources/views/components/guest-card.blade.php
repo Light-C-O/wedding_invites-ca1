@@ -7,7 +7,7 @@
 </head>
 
 <!-- Guest Card Component -->
-<div class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 bg-white dark:border-[#7c7467] hover:shadow-lg transition duration-300">
+<div class="bg-[#f8f5ed] dark:bg-[#5a6365] border rounded-lg shadow-md p-6 dark:border-[#7c7467] hover:shadow-lg transition duration-300">
     <!-- Guest Names -->
     <h4 class="text-center font-bold text-lg">{{ $first_name }} {{ $last_name }}</h4>
     <h4 class="text-center font-bold text-lg">

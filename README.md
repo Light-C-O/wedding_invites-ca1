@@ -140,5 +140,13 @@
 - **Monday - 24th Nov:**
     - Completed the recording.
 
+### Week 5
+-**Monday - 12th Dec:**
+    - Made a last-minute changes (_not in the recording_).
+    - Corrected few colours.
+    - Corrected structures: I attempted the vertical stretching with flex-col and place-self-stretch, but nothing changed. I later find the issue, it was the a tag that was block the effect, the place-self-strtech is supposed to be applied to the a tag not the on the card in the wedding-card compoment. Fixed the stretching with h-full on the a tag as well in the wedding-card. Wanted to add justify-center to center vertiacl in the wedding-card but decided against it.
+    - Dispalyed the number of guests in wedding: I wanted to show how many guests are attached to a single wedding. The WeddingController was updated to also eager load the guests. Later on, I got an error in the blade compente wedding-details that $wedding was not received as a variable. I had forgotten to add it to the @props as well as the show.blade for weddings. Now, the guest count is displayed correctly in addition to the capacity of the venue when a guest saves a date to the wedding.
+    
+
 ## GitHub Link
 https://github.com/Light-C-O/wedding_invites-ca1.git

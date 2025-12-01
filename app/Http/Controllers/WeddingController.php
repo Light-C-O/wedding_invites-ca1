@@ -86,7 +86,10 @@ class WeddingController extends Controller
     public function show(Wedding $wedding)
     {
         //
-        $wedding->load('venue');
+        // $wedding->load('venue');
+
+        // Eager load both guests and venue
+        $wedding->load(['venue', 'guests']);
 
         return view('weddings.show', compact('wedding'));
     }

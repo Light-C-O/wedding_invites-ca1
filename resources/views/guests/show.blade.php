@@ -20,9 +20,9 @@
     <div class="py-12">
         <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
             <!-- Back button to the dashboard -->
-            <div class="flex text-gray-900 font-semibold flex justify-between uppercase dark:text-gray-100 mb-2 " >
+            <div class="flex text-gray-900 font-semibold justify-between uppercase dark:text-gray-100 mb-2 " >
                 <!-- Back to venues index button -->
-                <a href="{{ route('guests.index') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600">Back to Guests</a>
+                <a href="{{ route('guests.index') }}" class="inline-block border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600">Back to Guests</a>
                 <a href="{{ route('dashboard') }}" class="inline-block px-2 py-1 hover:bg-stone-200 rounded dark:hover:bg-stone-500 underline underline-offset-8" :active="request()->routeIs('dashboard')">
                 {{ __('Back to Home') }}</a>
             </div>

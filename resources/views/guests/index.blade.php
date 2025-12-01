@@ -23,7 +23,7 @@
                     <div class="flex justify-between font-semibold mb-4">
                         <h3 class="text-lg content-center">List of Guests:</h3>
                         <div class="uppercase" >
-                            <a href="{{ route('guests.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('guests.create')">
+                            <a href="{{ route('guests.create') }}" class="inline-block border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('guests.create')">
                             {{ __('Create Guests') }}</a>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         @endforeach
                     </div>
                     <div class="flex justify-end text-gray-900 font-semibold uppercase dark:text-gray-100" >
-                        <a href="{{ route('guests.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('guests.create')">
+                        <a href="{{ route('guests.create') }}" class="inline-block  border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('guests.create')">
                         {{ __('Create Guests') }}</a>
                     </div>
                 </div>

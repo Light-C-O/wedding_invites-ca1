@@ -24,7 +24,7 @@
                         <h3 class="text-lg content-center">List of Weddings:</h3>
                         @if (auth()->user()->role === 'admin')
                             <div class="uppercase dark:text-gray-100" >
-                                <a href="{{ route('weddings.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('weddings.create')">
+                                <a href="{{ route('weddings.create') }}" class="inline-block border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('weddings.create')">
                                 {{ __('Create Weddings') }}</a>
                             </div>
                         @endif
@@ -33,7 +33,7 @@
                         <!-- Loop through each wedding and display it using the wedding-card component -->
                         
                         @foreach($weddings as $wedding)
-                                <a href="{{ route('weddings.show', $wedding) }}">
+                                <a href="{{ route('weddings.show', $wedding) }}" class="block h-full">
                                     <x-wedding-card
                                         :bride_name="$wedding->bride_name"
                                         :groom_name="$wedding->groom_name"
@@ -45,7 +45,7 @@
                     </div>
                     @if (auth()->user()->role === 'admin')
                         <div class="flex justify-end text-gray-900 font-semibold uppercase dark:text-gray-100" >
-                            <a href="{{ route('weddings.create') }}" class="inline-block border border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('weddings.create')">
+                            <a href="{{ route('weddings.create') }}" class="inline-block border-2 border-gray-100 dark:border-gray-300 px-2 py-1 rounded bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600" :active="request()->routeIs('weddings.create')">
                             {{ __('Create Weddings') }}</a>
                         </div>
                     @endif
